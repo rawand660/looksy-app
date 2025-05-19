@@ -1,0 +1,77 @@
+/* src/components/FAQAccordion.css */
+.faq-accordion {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
+
+.faq-accordion h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.faq-item {
+  background-color: #fff;
+  margin-bottom: 10px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  overflow: hidden; /* Important for smooth animation if added */
+}
+
+.faq-question {
+  background-color: transparent;
+  color: #333;
+  cursor: pointer;
+  padding: 18px 20px; /* Slightly more padding */
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 1.1rem; /* Slightly larger */
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.2s ease;
+}
+
+.faq-question:hover {
+  background-color: #f7f7f7; /* Lighter hover */
+}
+
+.faq-icon {
+  font-size: 1.6rem; /* Larger icon */
+  font-weight: 300; /* Lighter font weight for + / - */
+  color: #007bff;
+  transition: transform 0.3s ease; /* For rotation if you add it */
+  margin-left: 10px; /* Space from text */
+}
+
+.faq-icon.open {
+  transform: rotate(45deg); /* Example if using a single '+' icon that rotates to 'x' */ /* FIX: Uncommented */
+}
+
+.faq-answer {
+  padding: 20px 20px; /* Consistent padding */
+  background-color: #fdfdfd;
+  border-top: 1px solid #e9e9e9; /* Slightly lighter border */
+  color: #555;
+  line-height: 1.7; /* More line height */
+  font-size: 1rem;
+  /* Basic animation for reveal */
+  max-height: 500px; /* Adjust if answers are very long */
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+}
+
+/* This is a common trick for animating height with CSS transitions */
+.faq-item .faq-answer:not(.open) { /* Assuming you'd add 'open' class to faq-answer too if needed */
+  max-height: 0; /* FIX: Uncommented */
+  padding-top: 0; /* FIX: Uncommented */
+  padding-bottom: 0; /* FIX: Uncommented */
+  /* The provided JS handles visibility directly, so this part might not be needed
+     unless you change JS to toggle a class instead of conditional rendering for animation */
+}
