@@ -59,7 +59,7 @@ function MatchResultScreen({ userUploadedImage, onFindAnother, onStartOver }) {
       <h2>We Found a Match!</h2>
       <div className="match-container">
         <div className="user-photo-container">
-          <img src={userUploadedImage || "https://i.pravatar.cc/150?u=yourself"} alt="Your Photo" className="profile-photo" />
+          <img src={userUploadedImage || "https://i.pravatar.cc/150?u=yourself"} alt="You" className="profile-photo" />
           <p>You</p>
         </div>
         <div className="similarity-score">
