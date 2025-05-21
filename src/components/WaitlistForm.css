@@ -1,24 +1,26 @@
 /* src/components/WaitlistForm.css */
 .waitlist-form-container {
   max-width: 500px;
-  margin: 3rem auto; /* More margin */
-  padding: 2.5rem; /* More padding */
-  background-color: #fff;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background-color: #ffffff; /* White */
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.12); /* Softer shadow */
+  border: 1px solid #e0e0e0; /* Light border */
+  /* box-shadow: 0 4px 20px rgba(0,0,0,0.12); */ /* Removing shadow */
   text-align: center;
 }
 
 .waitlist-form-container h2 {
-  font-size: 1.9rem; /* Larger */
-  color: #333;
-  margin-bottom: 0.75rem; /* More space */
+  font-size: 1.9rem;
+  color: #000000; /* Black */
+  margin-bottom: 0.75rem;
+  font-weight: 600;
 }
 
 .waitlist-form-container p {
-  color: #555; /* Darker text for better readability */
-  margin-bottom: 2rem; /* More space */
-  font-size: 1.05rem; /* Slightly larger */
+  color: #333333; /* Dark grey */
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
   line-height: 1.6;
 }
 
@@ -29,25 +31,28 @@
 }
 
 .waitlist-form input[type="email"] {
-  padding: 0.85rem 1rem; /* More padding */
-  border: 1px solid #ccc;
+  padding: 0.85rem 1rem;
+  border: 1px solid #cccccc; /* Light grey border */
   border-radius: 5px;
   font-size: 1rem;
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.06); /* Subtle inner shadow */
+  /* box-shadow: inset 0 1px 3px rgba(0,0,0,0.06); */ /* Removing shadow */
+  background-color: #fff;
+  color: #1a1a1a;
+}
+.waitlist-form input[type="email"]::placeholder {
+    color: #999999;
 }
 
 .waitlist-form input[type="email"]:focus {
-  border-color: #007bff;
+  border-color: #000000; /* Black focus border */
   outline: none;
-  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+  box-shadow: 0 0 0 0.2rem rgba(0,0,0,.10); /* Subtle dark shadow on focus */
 }
 
-
-/* Button style will be inherited from global if button-primary is defined there */
-/* .waitlist-form button.button-primary { ... } */
+/* Button style will be inherited from App.css */
 
 .form-message {
-  margin-top: 1.5rem; /* More space */
+  margin-top: 1.5rem;
   padding: 0.85rem 1rem;
   border-radius: 5px;
   font-size: 0.95rem;
@@ -55,13 +60,14 @@
 }
 
 .form-message.success {
-  background-color: #e6ffed; /* Lighter green */
-  color: #006421; /* Darker green text */
-  border: 1px solid #c3e6cb;
+  background-color: #e6e6e6; /* Light grey for success */
+  color: #000000; /* Black text */
+  border: 1px solid #cccccc;
 }
 
 .form-message.error {
-  background-color: #ffebee; /* Lighter red */
-  color: #c62828; /* Darker red text */
-  border: 1px solid #f5c6cb;
+  background-color: #f0f0f0; /* Light grey also for error, maybe with an icon */
+  /* Or a very light red if some color is acceptable for errors: #ffe5e5; */
+  color: #000000; /* Black text */
+  border: 1px solid #cccccc;
 }

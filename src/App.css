@@ -1,193 +1,76 @@
-/* src/App.css - Global Styles */
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f4f7f6; /* Light, neutral background */
-  color: #333;
-  line-height: 1.6;
-}
-
-.App {
-  text-align: center;
+/* src/components/UploadScreen.css */
+.upload-screen {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Ensure footer stays at bottom */
-}
-
-.App-header {
-  background-color: #ffffff;
-  padding: 20px 30px; /* More horizontal padding */
-  color: #333;
-  border-bottom: 1px solid #e0e0e0;
-  display: flex;
-  flex-direction: column; /* Stack logo and nav on small screens */
   align-items: center;
-  justify-content: center; /* Center items */
-}
-
-.App-header h1 {
-  margin: 0 0 15px 0; /* Space below h1 on small screens */
-  font-size: 2.8rem; /* Larger */
-  font-weight: 700; /* Bolder */
-  color: #007bff; /* Your brand color */
-  letter-spacing: -1px; /* Slightly tighter letter spacing */
-}
-
-.App-header nav {
-  display: flex;
-  flex-wrap: wrap; /* Allow buttons to wrap on small screens */
-  justify-content: center;
-  gap: 10px; /* Space between nav buttons */
-}
-
-.App-header nav button {
-  margin: 0; /* Remove individual margins if using gap */
-  padding: 10px 18px; /* Larger click area */
-  background-color: transparent;
-  color: #0062cc; /* Slightly darker blue for contrast */
-  border: 1px solid transparent; /* Start transparent */
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 1rem; /* Larger font */
-  font-weight: 500;
-  transition: all 0.2s ease-in-out;
-}
-
-.App-header nav button:hover,
-.App-header nav button:focus {
-  color: #0056b3;
-  background-color: #e9ecef; /* Light hover background */
-  border-color: #0056b3; /* Border on hover/focus */
-  outline: none;
-}
-
-/* Tablet and Desktop header */
-@media (min-width: 768px) {
-  .App-header {
-    flex-direction: row; /* Horizontal layout */
-    justify-content: space-between; /* Space out logo and nav */
-  }
-  .App-header h1 {
-    margin-bottom: 0; /* No margin below h1 on larger screens */
-  }
-}
-
-
-.App-main {
-  padding: 20px;
-  flex-grow: 1; /* Allows main content to fill space and push footer down */
-}
-
-/* Landing Page Specific Styles */
-.landing-content {
-  max-width: 800px;
-  margin: 2rem auto;
   padding: 2rem;
-  background-color: #fff;
+  text-align: center;
+  max-width: 500px;
+  margin: 2rem auto;
+  background-color: #ffffff; /* White background */
   border-radius: 8px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  border: 1px solid #e0e0e0; /* Light border */
+  /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */ /* Removing shadow for flatter look */
 }
-.landing-content h2 {
-  font-size: 2.2rem;
-  color: #2c3e50; /* Darker, sophisticated blue */
-  margin-bottom: 1rem;
+
+.upload-screen h2 {
+  font-size: 1.8rem;
+  color: #000000; /* Black */
+  margin-bottom: 0.5rem;
+  font-weight: 600;
 }
-.landing-content p {
-  font-size: 1.15rem;
-  color: #555;
+
+.upload-screen p {
+  color: #333333; /* Dark grey */
   margin-bottom: 1.5rem;
-  line-height: 1.7;
 }
-.landing-image {
-  max-width: 100%;
-  height: auto;
+
+.upload-area {
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  margin-bottom: 1.5rem;
+  border: 2px dashed #cccccc; /* Lighter dashed border */
   border-radius: 8px;
-  margin: 1.5rem 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-.cta-buttons {
-  margin-top: 2rem;
   display: flex;
-  flex-direction: column; /* Stack on small screens */
-  gap: 1rem;
   align-items: center;
-}
-
-@media (min-width: 600px) {
-  .cta-buttons {
-    flex-direction: row; /* Side-by-side on larger screens */
-    justify-content: center;
-  }
-}
-
-
-.App-footer {
-  padding: 25px;
-  font-size: 0.9rem;
-  color: #6c757d; /* Muted grey */
-  border-top: 1px solid #e0e0e0;
-  margin-top: auto; /* Pushes footer to bottom if content is short */
-  background-color: #f8f9fa; /* Very light grey */
-}
-
-/* Global Button Styles (can be overridden by component CSS) */
-.button-primary {
-  background-color: #007bff;
-  color: white;
-  padding: 0.85rem 1.8rem; /* More padding */
-  border: none;
-  border-radius: 5px;
-  font-size: 1.05rem; /* Slightly larger */
-  font-weight: 500;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #fcfcfc; /* Very light grey */
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-.button-primary:hover {
-  background-color: #0056b3;
-  transform: translateY(-1px); /* Subtle lift */
-}
-.button-primary:active {
-    transform: translateY(0px); /* Press down effect */
+.image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.button-primary.large {
-    padding: 1rem 2.2rem;
-    font-size: 1.15rem;
+.image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #aaaaaa; /* Lighter grey for placeholder text */
+}
+
+.image-placeholder svg {
+  margin-bottom: 0.5rem;
+  fill: #cccccc; /* Lighter grey for icon */
+}
+
+/* Buttons will inherit from App.css global .button-primary and .button-secondary */
+/* Specific layout for buttons on this screen: */
+.upload-screen button {
+  margin-top: 0.5rem; /* Keep this for spacing between buttons */
+}
+.upload-screen .button-primary { /* Ensure specificity if needed */
+  margin-left: 0.5rem; /* If Select Photo and Find buttons are on same line */
 }
 
 
-.button-secondary {
-  background-color: #6c757d; /* Bootstrap secondary color */
-  color: white;
-  padding: 0.85rem 1.8rem;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  font-size: 1.05rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  display: inline-block;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-}
-
-.button-secondary:hover {
-  background-color: #5a6268;
-  border-color: #545b62;
-  transform: translateY(-1px);
-}
-.button-secondary:active {
-    transform: translateY(0px);
-}
-.button-secondary.large {
-    padding: 1rem 2.2rem;
-    font-size: 1.15rem;
+.privacy-note {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: #555555; /* Medium grey */
 }

@@ -8,30 +8,31 @@
 .faq-accordion h2 {
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #333;
+  color: #000000; /* Black */
   font-size: 1.8rem;
+  font-weight: 600;
 }
 
 .faq-item {
-  background-color: #fff;
+  background-color: #ffffff; /* White */
   margin-bottom: 10px;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #e0e0e0; /* Light grey border */
   border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-  overflow: hidden; /* Important for smooth animation if added */
+  /* box-shadow: 0 2px 5px rgba(0,0,0,0.05); */ /* Removing shadow */
+  overflow: hidden;
 }
 
 .faq-question {
   background-color: transparent;
-  color: #333;
+  color: #1a1a1a; /* Dark text */
   cursor: pointer;
-  padding: 18px 20px; /* Slightly more padding */
+  padding: 18px 20px;
   width: 100%;
   border: none;
   text-align: left;
   outline: none;
-  font-size: 1.1rem; /* Slightly larger */
-  font-weight: 500;
+  font-size: 1.1rem;
+  font-weight: 500; /* Medium weight */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -39,39 +40,25 @@
 }
 
 .faq-question:hover {
-  background-color: #f7f7f7; /* Lighter hover */
+  background-color: #f7f7f7; /* Very light grey hover */
 }
 
 .faq-icon {
-  font-size: 1.6rem; /* Larger icon */
-  font-weight: 300; /* Lighter font weight for + / - */
-  color: #007bff;
-  transition: transform 0.3s ease; /* For rotation if you add it */
-  margin-left: 10px; /* Space from text */
-}
-
-.faq-icon.open {
-  transform: rotate(45deg); /* Example if using a single '+' icon that rotates to 'x' */ /* FIX: Uncommented */
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: #000000; /* Black icon */
+  transition: transform 0.3s ease;
+  margin-left: 10px;
 }
 
 .faq-answer {
-  padding: 20px 20px; /* Consistent padding */
-  background-color: #fdfdfd;
-  border-top: 1px solid #e9e9e9; /* Slightly lighter border */
-  color: #555;
-  line-height: 1.7; /* More line height */
+  padding: 20px 20px;
+  background-color: #fdfdfd; /* Off-white for answer background */
+  border-top: 1px solid #e9e9e9; /* Lighter border */
+  color: #333333; /* Dark grey text */
+  line-height: 1.7;
   font-size: 1rem;
-  /* Basic animation for reveal */
-  max-height: 500px; /* Adjust if answers are very long */
+  max-height: 500px;
   overflow: hidden;
   transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
-}
-
-/* This is a common trick for animating height with CSS transitions */
-.faq-item .faq-answer:not(.open) { /* Assuming you'd add 'open' class to faq-answer too if needed */
-  max-height: 0; /* FIX: Uncommented */
-  padding-top: 0; /* FIX: Uncommented */
-  padding-bottom: 0; /* FIX: Uncommented */
-  /* The provided JS handles visibility directly, so this part might not be needed
-     unless you change JS to toggle a class instead of conditional rendering for animation */
 }
