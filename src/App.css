@@ -7,12 +7,13 @@ body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    sans-serif; /* Base font for inheritance */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff; /* White background */
-  color: #1a1a1a; /* Very dark grey for default text */
+  background-color: #ffffff;
+  color: #1a1a1a;
   line-height: 1.6;
+  font-weight: 400; /* Default body font weight */
 }
 
 #root .App {
@@ -29,16 +30,17 @@ body {
   color: #1a1a1a;
   border-bottom: 1px solid #eeeeee;
   display: flex;
-  flex-direction: column; /* Mobile default: H1 above Nav */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
 #root .App-header h1 { /* "Looksy" Name */
-  margin: 0 0 10px 0; /* Margin for mobile */
+  margin: 0 0 10px 0;
+  font-family: 'Inter', sans-serif; /* Explicit */
   font-size: 2.6rem;
-  font-weight: 700;
-  color: #000000; /* Black */
+  font-weight: 700; /* Bold */
+  color: #000000;
   letter-spacing: -0.5px;
 }
 
@@ -53,8 +55,9 @@ body {
   margin: 0;
   padding: 9px 16px;
   background-color: transparent;
-  color: #333333; /* Dark Grey for nav links */
-  font-weight: 500;
+  color: #333333;
+  font-family: 'Inter', sans-serif; /* Explicit for nav buttons */
+  font-weight: 500; /* Medium weight */
   border: 1px solid transparent;
   border-radius: 5px;
   cursor: pointer;
@@ -66,39 +69,36 @@ body {
 
 #root .App-header nav button:hover,
 #root .App-header nav button:focus {
-  color: #000000; /* Black on hover */
-  background-color: #f5f5f5; /* Light grey background on hover */
+  color: #000000;
+  background-color: #f5f5f5;
   outline: none;
 }
 
-/* Tablet and Desktop header: Looksy name centered, nav to the right */
 @media (min-width: 768px) {
   #root .App-header {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    position: relative; /* For absolute centering of h1 */
+    position: relative;
     padding-top: 25px;
     padding-bottom: 25px;
   }
-
   #root .App-header h1 {
-    margin: 0; /* Reset margin for absolute positioning */
+    margin: 0;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    color: #000000; /* Ensure black color */
+    color: #000000;
   }
-
   #root .App-header nav {
-    margin-left: auto; /* Push nav to the far right */
+    margin-left: auto;
   }
 }
 
 /* --- App Main Content Area --- */
 #root .App-main {
   padding: 20px;
-  flex-grow: 1; /* Allows main content to fill space */
+  flex-grow: 1;
 }
 
 /* --- Landing Page Specific Styles --- */
@@ -111,14 +111,17 @@ body {
   border-radius: 8px;
 }
 #root .landing-content h2 {
+  font-family: 'Inter', sans-serif; /* Explicit */
   font-size: 2.1rem;
-  color: #000000; /* Black */
-  font-weight: 600;
+  color: #000000;
+  font-weight: 600; /* Semi-bold */
   margin-bottom: 1rem;
 }
 #root .landing-content p {
+  font-family: 'Inter', sans-serif; /* Explicit */
   font-size: 1.05rem;
-  color: #333333; /* Dark Grey */
+  color: #333333;
+  font-weight: 400; /* Normal weight */
   margin-bottom: 1.5rem;
   line-height: 1.7;
 }
@@ -127,7 +130,7 @@ body {
   height: auto;
   border-radius: 8px;
   margin: 1.5rem 0;
-  filter: grayscale(100%); /* Make landing image B&W */
+  filter: grayscale(100%);
 }
 #root .cta-buttons {
   margin-top: 2rem;
@@ -147,70 +150,61 @@ body {
 /* --- App Footer --- */
 #root .App-footer {
   padding: 25px;
+  font-family: 'Inter', sans-serif; /* Explicit */
   font-size: 0.85rem;
-  color: #555555; /* Medium Grey */
+  font-weight: 400; /* Normal weight */
+  color: #555555;
   border-top: 1px solid #eeeeee;
-  margin-top: auto; /* Pushes footer to bottom */
-  background-color: #fafafa; /* Very light grey */
+  margin-top: auto;
+  background-color: #fafafa;
 }
 
 /* --- Global Button Styles (Black & White theme) --- */
-#root .button-primary {
-  background-color: #000000; /* Black background */
-  color: white; /* White text */
+#root .button-primary,
+#root .button-secondary { /* Combine for shared properties */
+  font-family: 'Inter', sans-serif; /* EXPLICIT FONT FOR ALL BUTTONS */
   padding: 0.8rem 1.7rem;
-  border: 1px solid #000000; /* Black border */
   border-radius: 5px;
   font-size: 0.95rem;
-  font-weight: 600;
+  font-weight: 600; /* Semi-bold buttons */
   cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
   text-decoration: none;
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: 0.75px;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
 }
 
+#root .button-primary {
+  background-color: #000000;
+  color: white;
+  border: 1px solid #000000;
+}
 #root .button-primary:hover {
-  background-color: #2a2a2a; /* Slightly lighter black */
+  background-color: #2a2a2a;
   border-color: #2a2a2a;
   color: white;
   transform: translateY(-1px);
 }
-#root .button-primary:active {
-    transform: translateY(0px);
-}
-
-#root .button-primary.large {
-    padding: 0.9rem 2.1rem;
-    font-size: 1.05rem;
-}
 
 #root .button-secondary {
-  background-color: #ffffff; /* White background */
-  color: #000000; /* Black text */
-  padding: 0.8rem 1.7rem;
-  border: 1px solid #000000; /* Black border */
-  border-radius: 5px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  text-decoration: none;
-  display: inline-block;
-  text-transform: uppercase;
-  letter-spacing: 0.75px;
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #000000;
 }
-
 #root .button-secondary:hover {
-  background-color: #f5f5f5; /* Light grey hover */
+  background-color: #f5f5f5;
   color: #000000;
   border-color: #000000;
   transform: translateY(-1px);
 }
+
+#root .button-primary:active,
 #root .button-secondary:active {
     transform: translateY(0px);
 }
+
+#root .button-primary.large,
 #root .button-secondary.large {
     padding: 0.9rem 2.1rem;
     font-size: 1.05rem;

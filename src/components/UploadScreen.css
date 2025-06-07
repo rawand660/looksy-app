@@ -1,15 +1,84 @@
 /* src/components/UploadScreen.css */
-#root .upload-screen { /* Added #root */
+#root .upload-screen {
   display: flex;
-  /* ... */
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  text-align: center;
+  max-width: 500px;
+  margin: 2rem auto;
   background-color: #ffffff;
+  border-radius: 8px;
   border: 1px solid #e0e0e0;
+  font-family: 'Inter', sans-serif; /* Ensure base font for component scope */
 }
 
-#root .upload-screen h2 { /* Added #root */
+#root .upload-screen h2 {
+  font-family: 'Inter', sans-serif; /* Explicit */
   font-size: 1.8rem;
   color: #000000;
-  /* ... */
+  margin-bottom: 0.5rem;
+  font-weight: 600; /* Semi-bold heading */
 }
 
-/* ... and so on for all rules in this file ... */
+#root .upload-screen p {
+  font-family: 'Inter', sans-serif; /* Explicit */
+  color: #333333;
+  font-weight: 400; /* Normal weight paragraph */
+  margin-bottom: 1.5rem;
+}
+
+#root .upload-area {
+  width: 100%;
+  max-width: 300px;
+  height: 300px;
+  margin-bottom: 1.5rem;
+  border: 2px dashed #cccccc;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #fcfcfc;
+  cursor: pointer;
+}
+
+#root .image-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#root .image-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #aaaaaa;
+}
+#root .image-placeholder p { /* Paragraph inside placeholder */
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    color: #aaaaaa; /* Ensure consistency */
+}
+
+
+#root .image-placeholder svg {
+  margin-bottom: 0.5rem;
+  fill: #cccccc;
+}
+
+#root .upload-screen button { /* For layout specific to this screen's buttons */
+  margin-top: 0.5rem;
+}
+#root .upload-screen .button-primary {
+  margin-left: 0.5rem;
+}
+
+#root .privacy-note {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: #555555;
+  font-family: 'Inter', sans-serif; /* Explicit */
+  font-weight: 400;
+}
