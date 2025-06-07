@@ -1,5 +1,5 @@
 /* src/components/MatchResultScreen.css */
-.match-result-screen {
+#root .match-result-screen { /* Added #root */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,20 +13,20 @@
   /* box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); */ /* Removing shadow */
 }
 
-.match-result-screen h2 {
+#root .match-result-screen h2 { /* Added #root */
   font-size: 1.8rem;
   color: #000000; /* Black */
   margin-bottom: 1.5rem;
   font-weight: 600;
 }
 
-.loading-results {
+#root .loading-results { /* Added #root */
   font-size: 1.2rem;
   color: #555555; /* Medium grey */
   padding: 3rem;
 }
 
-.match-container {
+#root .match-container { /* Added #root */
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -35,14 +35,13 @@
   gap: 1rem;
 }
 
-.user-photo-container p,
-.match-photo-container p {
+#root .user-photo-container p, /* Added #root */
+#root .match-photo-container p { /* Added #root */
   color: #1a1a1a; /* Dark text for names */
   font-weight: 500;
 }
 
-
-.profile-photo {
+#root .profile-photo { /* Added #root */
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -52,7 +51,7 @@
   background-color: #f5f5f5; /* Light grey placeholder bg */
 }
 
-.similarity-score {
+#root .similarity-score { /* Added #root */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -62,17 +61,18 @@
   min-width: 100px;
 }
 
-.similarity-score p {
+#root .similarity-score p { /* Added #root */
   font-size: 2.5rem;
   margin: 0;
 }
 
-.similarity-score span {
+#root .similarity-score span { /* Added #root */
   font-size: 0.9rem;
   color: #555555; /* Medium grey for "Similar" text */
 }
 
-.instagram-opt-in, .user-instagram-share {
+#root .instagram-opt-in, /* Added #root */
+#root .user-instagram-share { /* Added #root */
   margin-bottom: 1rem;
   padding: 1rem;
   background-color: #f9f9f9; /* Very light grey background */
@@ -83,7 +83,8 @@
   box-sizing: border-box;
 }
 
-.instagram-opt-in label, .user-instagram-share label {
+#root .instagram-opt-in label, /* Added #root */
+#root .user-instagram-share label { /* Added #root */
   display: flex;
   align-items: center;
   font-size: 0.95rem;
@@ -91,8 +92,8 @@
   cursor: pointer;
 }
 
-.instagram-opt-in input[type="checkbox"],
-.user-instagram-share input[type="checkbox"] {
+#root .instagram-opt-in input[type="checkbox"], /* Added #root */
+#root .user-instagram-share input[type="checkbox"] { /* Added #root */
   margin-right: 0.75rem;
   width: 18px;
   height: 18px;
@@ -100,7 +101,7 @@
   accent-color: #000000; /* Make checkbox checkmark black */
 }
 
-.insta-input {
+#root .insta-input { /* Added #root */
     display: block;
     width: calc(100% - 22px);
     padding: 0.6rem;
@@ -112,12 +113,12 @@
     background-color: #fff;
     color: #1a1a1a;
 }
-.insta-input::placeholder {
+#root .insta-input::placeholder { /* Added #root */
     color: #999999;
 }
 
 
-.instagram-handle {
+#root .instagram-handle { /* Added #root */
   margin: 1rem 0;
   padding: 0.75rem 1rem;
   background-color: #f0f0f0; /* Light grey background */
@@ -128,23 +129,23 @@
   box-sizing: border-box;
 }
 
-.instagram-handle p {
+#root .instagram-handle p { /* Added #root */
   margin: 0;
   color: #000000; /* Black text */
   word-break: break-all;
 }
 
-.instagram-handle a {
+#root .instagram-handle a { /* Added #root */
   font-weight: bold;
   color: #000000; /* Black link */
   text-decoration: none;
   margin-left: 0.25rem;
 }
-.instagram-handle a:hover {
+#root .instagram-handle a:hover { /* Added #root */
   text-decoration: underline;
 }
 
-.result-actions {
+#root .result-actions { /* Added #root */
     margin-top: 1rem;
 }
-/* Buttons will inherit global styles */
+/* Buttons will inherit global styles from App.css (e.g., #root .button-primary) */

@@ -1,11 +1,11 @@
 /* src/components/FAQAccordion.css */
-.faq-accordion {
+#root .faq-accordion { /* Added #root */
   max-width: 700px;
   margin: 2rem auto;
   padding: 1rem;
 }
 
-.faq-accordion h2 {
+#root .faq-accordion h2 { /* Added #root */
   text-align: center;
   margin-bottom: 1.5rem;
   color: #000000; /* Black */
@@ -13,7 +13,7 @@
   font-weight: 600;
 }
 
-.faq-item {
+#root .faq-item { /* Added #root */
   background-color: #ffffff; /* White */
   margin-bottom: 10px;
   border: 1px solid #e0e0e0; /* Light grey border */
@@ -22,7 +22,7 @@
   overflow: hidden;
 }
 
-.faq-question {
+#root .faq-question { /* Added #root */
   background-color: transparent;
   color: #1a1a1a; /* Dark text */
   cursor: pointer;
@@ -39,11 +39,11 @@
   transition: background-color 0.2s ease;
 }
 
-.faq-question:hover {
+#root .faq-question:hover { /* Added #root */
   background-color: #f7f7f7; /* Very light grey hover */
 }
 
-.faq-icon {
+#root .faq-icon { /* Added #root */
   font-size: 1.6rem;
   font-weight: 300;
   color: #000000; /* Black icon */
@@ -51,7 +51,7 @@
   margin-left: 10px;
 }
 
-.faq-answer {
+#root .faq-answer { /* Added #root */
   padding: 20px 20px;
   background-color: #fdfdfd; /* Off-white for answer background */
   border-top: 1px solid #e9e9e9; /* Lighter border */

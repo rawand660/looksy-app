@@ -1,57 +1,217 @@
-/* src/App.css */
+/* src/App.css - COMPLETE B&W THEME WITH INTER FONT & SPECIFICITY FIXES */
+
+/* Import Google Font (Inter) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 body {
   margin: 0;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; /* <--- Ensure this semicolon is present and the font stack is complete */
+    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #ffffff;
-  color: #1a1a1a;
+  background-color: #ffffff; /* White background */
+  color: #1a1a1a; /* Very dark grey for default text */
   line-height: 1.6;
 }
 
-#root .App { /* Add #root here */
+#root .App {
   text-align: center;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
-#root .App-header { /* Add #root here */
+/* --- App Header --- */
+#root .App-header {
   background-color: #ffffff;
-  /* ... */
+  padding: 20px 30px;
+  color: #1a1a1a;
+  border-bottom: 1px solid #eeeeee;
+  display: flex;
+  flex-direction: column; /* Mobile default: H1 above Nav */
+  align-items: center;
+  justify-content: center;
 }
 
-#root .App-header h1 { /* Add #root here */
-  margin: 0 0 10px 0;
+#root .App-header h1 { /* "Looksy" Name */
+  margin: 0 0 10px 0; /* Margin for mobile */
   font-size: 2.6rem;
   font-weight: 700;
-  color: #000000 !important; /* KEEP !important FOR THIS ONE IF IT WAS WORKING FOR THE BLUE TEXT */
+  color: #000000; /* Black */
   letter-spacing: -0.5px;
 }
 
-/* For the media query part: */
+#root .App-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+}
+
+#root .App-header nav button {
+  margin: 0;
+  padding: 9px 16px;
+  background-color: transparent;
+  color: #333333; /* Dark Grey for nav links */
+  font-weight: 500;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+#root .App-header nav button:hover,
+#root .App-header nav button:focus {
+  color: #000000; /* Black on hover */
+  background-color: #f5f5f5; /* Light grey background on hover */
+  outline: none;
+}
+
+/* Tablet and Desktop header: Looksy name centered, nav to the right */
 @media (min-width: 768px) {
-  #root .App-header { /* Add #root here */
-    /* ... */
+  #root .App-header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* For absolute centering of h1 */
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
 
-  #root .App-header h1 { /* Add #root here */
-    /* ... your absolute centering styles ... */
-    /* Ensure color is also set here if it needs to override something specific to this media query */
-    color: #000000 !important; /* KEEP !important FOR THIS ONE IF IT WAS WORKING FOR THE BLUE TEXT */
+  #root .App-header h1 {
+    margin: 0; /* Reset margin for absolute positioning */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #000000; /* Ensure black color */
   }
 
-  #root .App-header nav { /* Add #root here */
-    margin-left: auto;
+  #root .App-header nav {
+    margin-left: auto; /* Push nav to the far right */
   }
 }
 
-/* ... and so on for .button-primary, .button-secondary, etc. ... */
+/* --- App Main Content Area --- */
+#root .App-main {
+  padding: 20px;
+  flex-grow: 1; /* Allows main content to fill space */
+}
+
+/* --- Landing Page Specific Styles --- */
+#root .landing-content {
+  max-width: 750px;
+  margin: 2rem auto;
+  padding: 2.5rem;
+  background-color: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+}
+#root .landing-content h2 {
+  font-size: 2.1rem;
+  color: #000000; /* Black */
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+#root .landing-content p {
+  font-size: 1.05rem;
+  color: #333333; /* Dark Grey */
+  margin-bottom: 1.5rem;
+  line-height: 1.7;
+}
+#root .landing-image {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+  filter: grayscale(100%); /* Make landing image B&W */
+}
+#root .cta-buttons {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+@media (min-width: 600px) {
+  #root .cta-buttons {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+/* --- App Footer --- */
+#root .App-footer {
+  padding: 25px;
+  font-size: 0.85rem;
+  color: #555555; /* Medium Grey */
+  border-top: 1px solid #eeeeee;
+  margin-top: auto; /* Pushes footer to bottom */
+  background-color: #fafafa; /* Very light grey */
+}
+
+/* --- Global Button Styles (Black & White theme) --- */
 #root .button-primary {
-    background-color: #000000;
-    /* ... */
+  background-color: #000000; /* Black background */
+  color: white; /* White text */
+  padding: 0.8rem 1.7rem;
+  border: 1px solid #000000; /* Black border */
+  border-radius: 5px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+}
+
+#root .button-primary:hover {
+  background-color: #2a2a2a; /* Slightly lighter black */
+  border-color: #2a2a2a;
+  color: white;
+  transform: translateY(-1px);
+}
+#root .button-primary:active {
+    transform: translateY(0px);
+}
+
+#root .button-primary.large {
+    padding: 0.9rem 2.1rem;
+    font-size: 1.05rem;
+}
+
+#root .button-secondary {
+  background-color: #ffffff; /* White background */
+  color: #000000; /* Black text */
+  padding: 0.8rem 1.7rem;
+  border: 1px solid #000000; /* Black border */
+  border-radius: 5px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+  display: inline-block;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+}
+
+#root .button-secondary:hover {
+  background-color: #f5f5f5; /* Light grey hover */
+  color: #000000;
+  border-color: #000000;
+  transform: translateY(-1px);
+}
+#root .button-secondary:active {
+    transform: translateY(0px);
+}
+#root .button-secondary.large {
+    padding: 0.9rem 2.1rem;
+    font-size: 1.05rem;
 }
