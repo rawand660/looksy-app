@@ -147,6 +147,53 @@ body {
   }
 }
 
+/* src/App.css */
+/* ... other styles ... */
+
+#root .landing-image-container {
+  display: flex; /* Arrange images side-by-side */
+  justify-content: center; /* Center the group of images */
+  align-items: flex-start; /* Align tops if images have different heights */
+  gap: 1rem; /* Space between the images */
+  margin: 1.5rem 0; /* Keep existing vertical margin */
+  flex-wrap: wrap; /* Allow images to wrap on smaller screens */
+}
+
+#root .landing-image-container .landing-image {
+  /* Individual image styling was already in App.css: */
+  /* max-width: 100%; (this will be an issue with flex, adjust below) */
+  width: calc(50% - 0.5rem); /* Make each image take roughly half the container width, accounting for gap */
+  max-width: 250px; /* Max width for each image to prevent them from getting too large */
+  height: auto;
+  border-radius: 8px;
+  /* filter: grayscale(100%); was already there */
+  object-fit: cover; /* Ensure images fill their space nicely if aspect ratios differ */
+  min-height: 300px; /* Give a min height to maintain some consistency */
+}
+
+/* On smaller screens, stack the images */
+@media (max-width: 600px) {
+  #root .landing-image-container .landing-image {
+    width: 70%; /* Or 100% if you want them full width and stacked */
+    max-width: 300px; /* Adjust max-width for stacked view */
+  }
+}
+
+/* ... rest of App.css ... */
+
+/* src/App.css */
+/* ... other styles ... */
+
+#root .button-primary .demo-text,
+#root .button-secondary .demo-text { /* If you add demo text to secondary buttons too */
+  font-size: 0.8em; /* Makes it 80% of the button's font size */
+  font-weight: 400; /* Lighter weight if the button text is bold */
+  opacity: 0.85; /* Slightly less prominent */
+  margin-left: 0.3em;
+  text-transform: none; /* If buttons are uppercase, this can make (Demo) normal case */
+}
+
+/* ... rest of App.css ... */
 /* --- App Footer --- */
 #root .App-footer {
   padding: 25px;

@@ -10,7 +10,7 @@ function App() {
   const [currentView, setCurrentView] = useState('landing'); // 'landing', 'upload', 'results', 'waitlist', 'faq'
   const [uploadedImagePreview, setUploadedImagePreview] = useState(null);
   // eslint-disable-next-line no-unused-vars
-  const [uploadedImageFile, setUploadedImageFile] = useState(null); // Store the file if needed later
+  const [uploadedImageFile, setUploadedImageFile] = useState(null);
 
   const handleImageUploaded = (previewUrl, imageFile) => {
     setUploadedImagePreview(previewUrl);
@@ -35,9 +35,12 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Looksy</h1>
+        {/* Make h1 clickable to go to landing/home */}
+        <h1 onClick={() => setCurrentView('landing')} style={{ cursor: 'pointer' }}>
+          Looksy
+        </h1>
         <nav>
-          <button onClick={() => setCurrentView('landing')}>Home</button>
+          {/* <button onClick={() => setCurrentView('landing')}>Home</button> REMOVED */}
           <button onClick={() => setCurrentView('upload')}>Try Looksy</button>
           <button onClick={() => setCurrentView('faq')}>FAQ</button>
           <button onClick={() => setCurrentView('waitlist')}>Join Waitlist</button>
@@ -46,23 +49,30 @@ function App() {
 
       <main className="App-main">
         {currentView === 'landing' && (
-           <div className="landing-content">
-             <h2>Discover Your Digital Doppelgänger!</h2>
-             <p>Ever wondered who out there shares your looks? Looksy connects you with people from our user community based on facial similarity. Upload your photo, get matched, and optionally connect!</p>
-             <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600&h=400&dpr=1" alt="Example faces" className="landing-image"/>
-             {/* Replace with a more relevant image or your Figma landing graphic */}
-             <div className="cta-buttons">
-                <button onClick={() => setCurrentView('upload')} className="button-primary large">Find My Lookalike Now</button>
-                <button onClick={() => setCurrentView('waitlist')} className="button-secondary large">Join the Waitlist</button>
-             </div>
-           </div>
+          <div className="landing-content">
+            {/* ... existing landing content from previous App.js ... */}
+            <h2>Discover Your Digital Doppelgänger!</h2>
+            <p>Ever wondered who out there shares your looks? Looksy connects you with people from our user community based on facial similarity. Upload your photo, get matched, and optionally connect!</p>
+            {/* Placeholder for image changes - see point 2 below */}
+            <div className="landing-image-container"> {/* Added a container for images */}
+                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=1" alt="Person's face" className="landing-image" />
+                {/* Placeholder for doppelganger image - needs styling */}
+                <img src="https://images.pexels.com/photos/1181686/pexels-photo-1181686.jpeg?auto=compress&cs=tinysrgb&w=300&h=400&dpr=1" alt="Similar looking person" className="landing-image doppelganger-image" />
+            </div>
+            <div className="cta-buttons">
+               {/* Add (Demo) to this button - see point 3 below */}
+               <button onClick={() => setCurrentView('upload')} className="button-primary large">
+                 Find My Lookalike Now <span className="demo-text">(Demo)</span>
+               </button>
+               <button onClick={() => setCurrentView('waitlist')} className="button-secondary large">Join the Waitlist</button>
+            </div>
+          </div>
         )}
         {currentView === 'upload' && <UploadScreen onImageUpload={handleImageUploaded} />}
         {currentView === 'results' && (
           <MatchResultScreen
             userUploadedImage={uploadedImagePreview}
             onStartOver={handleStartOver}
-            // onFindAnother is handled within MatchResultScreen
           />
         )}
         {currentView === 'waitlist' && <WaitlistForm />}
@@ -71,7 +81,6 @@ function App() {
 
       <footer className="App-footer">
         <p>© {new Date().getFullYear()} Looksy. Your Face, Your Control.</p>
-        {/* Add links to Privacy Policy, Terms, etc. later */}
       </footer>
     </div>
   );
