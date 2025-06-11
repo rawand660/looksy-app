@@ -7,24 +7,24 @@
   text-align: center;
   max-width: 600px;
   margin: 2rem auto;
-  background-color: #ffffff;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  font-family: 'Inter', sans-serif; /* Base for component */
+  background-color: #1f1f1f; /* Darker component background */
+  border-radius: var(--base-border-radius); /* Rounded */
+  border: 1px solid #333333; /* Darker border */
+  font-family: 'Inter', sans-serif;
 }
 
 #root .match-result-screen h2 {
-  font-family: 'Inter', sans-serif; /* Explicit */
+  font-family: 'Inter', sans-serif;
   font-size: 1.8rem;
-  color: #000000;
+  color: #ffffff; /* White */
   margin-bottom: 1.5rem;
   font-weight: 600;
 }
 
 #root .loading-results {
-  font-family: 'Inter', sans-serif; /* Explicit */
+  font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
-  color: #555555;
+  color: #a0a0a0; /* Lighter grey */
   padding: 3rem;
 }
 
@@ -39,19 +39,19 @@
 
 #root .user-photo-container p,
 #root .match-photo-container p {
-  font-family: 'Inter', sans-serif; /* Explicit */
-  color: #1a1a1a;
-  font-weight: 500; /* Medium weight for names */
+  font-family: 'Inter', sans-serif;
+  color: #e0e0e0; /* Light grey for names */
+  font-weight: 500;
 }
 
 #root .profile-photo {
   width: 120px;
   height: 120px;
-  border-radius: 50%;
+  border-radius: 50%; /* Keep photos round */
   object-fit: cover;
-  border: 3px solid #f0f0f0;
+  border: 3px solid #444444; /* Darker border for photos */
   margin-bottom: 0.5rem;
-  background-color: #f5f5f5;
+  background-color: #333333; /* Dark grey placeholder bg */
 }
 
 #root .similarity-score {
@@ -59,32 +59,30 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-weight: bold; /* Base bold for score */
-  color: #000000;
+  font-weight: bold;
+  color: #ffffff; /* White for similarity percentage */
   min-width: 100px;
 }
-
-#root .similarity-score p { /* The percentage itself */
-  font-family: 'Inter', sans-serif; /* Explicit */
+#root .similarity-score p {
+  font-family: 'Inter', sans-serif;
   font-size: 2.5rem;
-  font-weight: 700; /* Bolder for the number */
+  font-weight: 700;
   margin: 0;
 }
-
-#root .similarity-score span { /* The "Similar" text */
-  font-family: 'Inter', sans-serif; /* Explicit */
+#root .similarity-score span {
+  font-family: 'Inter', sans-serif;
   font-size: 0.9rem;
-  font-weight: 500; /* Medium weight */
-  color: #555555;
+  font-weight: 500;
+  color: #a0a0a0; /* Lighter grey for "Similar" text */
 }
 
 #root .instagram-opt-in,
 #root .user-instagram-share {
   margin-bottom: 1rem;
   padding: 1rem;
-  background-color: #f9f9f9;
-  border-radius: 6px;
-  border: 1px solid #eeeeee;
+  background-color: #2a2a2a; /* Darker grey background for these sections */
+  border-radius: var(--base-border-radius); /* Rounded */
+  border: 1px solid #444444; /* Darker border */
   width: 90%;
   max-width: 450px;
   box-sizing: border-box;
@@ -94,10 +92,10 @@
 #root .user-instagram-share label {
   display: flex;
   align-items: center;
-  font-family: 'Inter', sans-serif; /* Explicit */
+  font-family: 'Inter', sans-serif;
   font-size: 0.95rem;
-  font-weight: 400; /* Normal weight */
-  color: #333333;
+  font-weight: 400;
+  color: #cccccc; /* Lighter grey text */
   cursor: pointer;
 }
 
@@ -107,52 +105,58 @@
   width: 18px;
   height: 18px;
   flex-shrink: 0;
-  accent-color: #000000;
+  accent-color: #ffffff; /* Make checkbox checkmark white */
+  /* For better cross-browser, custom checkboxes might be needed for dark mode */
+  border: 1px solid #777; /* Border for checkbox itself */
+  background-color: #333; /* Background for checkbox */
 }
+#root .user-instagram-share input[type="checkbox"]:checked {
+    background-color: #555; /* Slightly different when checked */
+}
+
 
 #root .insta-input {
     display: block;
     width: calc(100% - 22px);
     padding: 0.6rem;
     margin-top: 0.75rem;
-    border: 1px solid #cccccc;
-    border-radius: 4px;
-    font-family: 'Inter', sans-serif; /* Explicit */
+    border: 1px solid #555555; /* Darker border */
+    border-radius: calc(var(--base-border-radius) - 4px); /* Slightly less rounded than container */
+    font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
     font-weight: 400;
     box-sizing: border-box;
-    background-color: #fff;
-    color: #1a1a1a;
+    background-color: #333333; /* Dark input background */
+    color: #e0e0e0; /* Light text */
 }
 #root .insta-input::placeholder {
-    color: #999999;
-    font-family: 'Inter', sans-serif; /* Ensure placeholder font too */
+    color: #888888; /* Dimmer placeholder */
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
 }
 
 #root .instagram-handle {
   margin: 1rem 0;
   padding: 0.75rem 1rem;
-  background-color: #f0f0f0;
-  border-radius: 6px;
-  border: 1px solid #dddddd;
+  background-color: #333333; /* Dark grey background */
+  border-radius: var(--base-border-radius); /* Rounded */
+  border: 1px solid #555555; /* Darker border */
   width: 90%;
   max-width: 450px;
   box-sizing: border-box;
 }
 
 #root .instagram-handle p {
-  font-family: 'Inter', sans-serif; /* Explicit */
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
   margin: 0;
-  color: #000000;
+  color: #ffffff; /* White text */
   word-break: break-all;
 }
-
 #root .instagram-handle a {
-  font-family: 'Inter', sans-serif; /* Explicit */
-  font-weight: 600; /* Bolder for the link part */
-  color: #000000;
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  color: #ffffff; /* White link */
   text-decoration: none;
   margin-left: 0.25rem;
 }

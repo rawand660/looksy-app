@@ -1,40 +1,40 @@
 /* src/components/FAQAccordion.css */
 #root .faq-accordion {
-  max-width: 700px;
+  max-width: 700px; /* This can be overridden by .faq-section-landing .faq-accordion if needed */
   margin: 2rem auto;
-  padding: 1rem;
-  font-family: 'Inter', sans-serif; /* Base for component */
+  padding: 1rem 0; /* Remove horizontal padding, section handles it */
+  font-family: 'Inter', sans-serif;
 }
 
-#root .faq-accordion h2 {
-  font-family: 'Inter', sans-serif; /* Explicit */
+#root .faq-accordion h2 { /* This h2 might be controlled by the section title style now */
+  font-family: 'Inter', sans-serif;
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #000000;
+  color: #ffffff; /* White */
   font-size: 1.8rem;
   font-weight: 600;
 }
 
 #root .faq-item {
-  background-color: #ffffff;
+  background-color: #1f1f1f; /* Darker item background */
   margin-bottom: 10px;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
+  border: 1px solid #333333; /* Darker border */
+  border-radius: var(--base-border-radius); /* Rounded */
   overflow: hidden;
 }
 
 #root .faq-question {
   background-color: transparent;
-  color: #1a1a1a;
+  color: #e0e0e0; /* Light text */
   cursor: pointer;
   padding: 18px 20px;
   width: 100%;
   border: none;
   text-align: left;
   outline: none;
-  font-family: 'Inter', sans-serif; /* Explicit */
+  font-family: 'Inter', sans-serif;
   font-size: 1.1rem;
-  font-weight: 500; /* Medium weight for questions */
+  font-weight: 500;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,25 +42,25 @@
 }
 
 #root .faq-question:hover {
-  background-color: #f7f7f7;
+  background-color: #2a2a2a; /* Slightly lighter dark hover */
 }
 
 #root .faq-icon {
-  font-family: 'Inter', sans-serif; /* Ensure icon (if it's text based) uses it too */
+  font-family: 'Inter', sans-serif;
   font-size: 1.6rem;
-  font-weight: 300; /* Lighter for +/- icon */
-  color: #000000;
+  font-weight: 300;
+  color: #ffffff; /* White icon */
   transition: transform 0.3s ease;
   margin-left: 10px;
 }
 
 #root .faq-answer {
   padding: 20px 20px;
-  background-color: #fdfdfd;
-  border-top: 1px solid #e9e9e9;
-  color: #333333;
-  font-family: 'Inter', sans-serif; /* Explicit for answers */
-  font-weight: 400; /* Normal weight for answers */
+  background-color: #2a2a2a; /* Darker answer background */
+  border-top: 1px solid #333333; /* Darker border */
+  color: #cccccc; /* Lighter grey text */
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
   line-height: 1.7;
   font-size: 1rem;
   max-height: 500px;

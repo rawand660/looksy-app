@@ -7,24 +7,24 @@
   text-align: center;
   max-width: 500px;
   margin: 2rem auto;
-  background-color: #ffffff;
-  border-radius: 8px;
-  border: 1px solid #e0e0e0;
-  font-family: 'Inter', sans-serif; /* Ensure base font for component scope */
+  background-color: #1f1f1f; /* Darker component background */
+  border-radius: var(--base-border-radius); /* Rounded */
+  border: 1px solid #333333; /* Darker border */
+  font-family: 'Inter', sans-serif;
 }
 
 #root .upload-screen h2 {
-  font-family: 'Inter', sans-serif; /* Explicit */
+  font-family: 'Inter', sans-serif;
   font-size: 1.8rem;
-  color: #000000;
+  color: #ffffff; /* White */
   margin-bottom: 0.5rem;
-  font-weight: 600; /* Semi-bold heading */
+  font-weight: 600;
 }
 
 #root .upload-screen p {
-  font-family: 'Inter', sans-serif; /* Explicit */
-  color: #333333;
-  font-weight: 400; /* Normal weight paragraph */
+  font-family: 'Inter', sans-serif;
+  color: #cccccc; /* Lighter grey */
+  font-weight: 400;
   margin-bottom: 1.5rem;
 }
 
@@ -33,13 +33,13 @@
   max-width: 300px;
   height: 300px;
   margin-bottom: 1.5rem;
-  border: 2px dashed #cccccc;
-  border-radius: 8px;
+  border: 2px dashed #555555; /* Darker dashed border */
+  border-radius: var(--base-border-radius); /* Rounded */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: #fcfcfc;
+  background-color: #2a2a2a; /* Darker upload area */
   cursor: pointer;
 }
 
@@ -54,21 +54,20 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #aaaaaa;
+  color: #777777; /* Dimmer grey for placeholder text */
 }
-#root .image-placeholder p { /* Paragraph inside placeholder */
+#root .image-placeholder p {
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    color: #aaaaaa; /* Ensure consistency */
+    color: #777777;
 }
-
 
 #root .image-placeholder svg {
   margin-bottom: 0.5rem;
-  fill: #cccccc;
+  fill: #777777; /* Dimmer grey for icon */
 }
 
-#root .upload-screen button { /* For layout specific to this screen's buttons */
+#root .upload-screen button {
   margin-top: 0.5rem;
 }
 #root .upload-screen .button-primary {
@@ -78,7 +77,7 @@
 #root .privacy-note {
   margin-top: 1.5rem;
   font-size: 0.875rem;
-  color: #555555;
-  font-family: 'Inter', sans-serif; /* Explicit */
+  color: #a0a0a0; /* Dimmer grey */
+  font-family: 'Inter', sans-serif;
   font-weight: 400;
 }

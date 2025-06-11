@@ -1,6 +1,6 @@
 // src/components/MatchResultScreen.js
 import React, { useState, useEffect } from 'react';
-import './MatchResultScreen.css';
+import './MatchResultScreen.css'; // This line imports the CSS file
 
 // Sample "database" of potential matches
 const fakeMatchesDb = [
@@ -28,27 +28,43 @@ function MatchResultScreen({ userUploadedImage, onFindAnother, onStartOver }) {
   const [userInstagramHandle, setUserInstagramHandle] = useState('');
 
   useEffect(() => {
+    // Simulate fetching a match when the component mounts or userUploadedImage changes
     const fetchedMatch = getSimulatedMatch();
     setMatch(fetchedMatch);
     setShowInstagram(false); // Reset for new match
-  }, [userUploadedImage]); // Re-fetch if a new image is "processed"
+  }, [userUploadedImage]); // Re-fetch if a new image is "processed" (or component mounts)
 
   const handleFindAnother = () => {
     const newMatch = getSimulatedMatch();
     setMatch(newMatch);
-    setShowInstagram(false);
-    if(onFindAnother) onFindAnother();
+    setShowInstagram(false); // Reset the checkbox for the new match
+    if(onFindAnother) onFindAnother(); // Call prop if it exists (though it's not currently used)
   }
 
   const handleShowInstagramToggle = (e) => {
     setShowInstagram(e.target.checked);
   };
 
-  const handleUserOptInInstagram = (e) => {
+  const handleUserOptInInstagramChange = (e) => { // Renamed for clarity
     setUserOptInInstagram(e.target.checked);
-    // In a real app, save this to backend
+    // In a real app, you'd save this preference along with the handle
+    if (!e.target.checked) {
+        // Optionally clear handle if they uncheck, or keep it
+        // setUserInstagramHandle('');
+    }
     console.log("User Instagram opt-in:", e.target.checked, "Handle:", userInstagramHandle);
   };
+
+  const handleUserInstagramHandleChange = (e) => {
+    setUserInstagramHandle(e.target.value);
+  };
+
+  const saveUserInstagramPreference = () => { // Example function if you had a save button
+    // This is where you would send userOptInInstagram and userInstagramHandle to your backend
+    console.log("Saving user Instagram preference:", userOptInInstagram, "Handle:", userInstagramHandle);
+    // alert("Preference (simulated) saved!");
+  };
+
 
   if (!match) {
     return <div className="loading-results">Finding your match...</div>;
@@ -59,7 +75,11 @@ function MatchResultScreen({ userUploadedImage, onFindAnother, onStartOver }) {
       <h2>We Found a Match!</h2>
       <div className="match-container">
         <div className="user-photo-container">
-          <img src={userUploadedImage || "https://i.pravatar.cc/150?u=yourself"} alt="You" className="profile-photo" />
+          <img 
+            src={userUploadedImage || "https://i.pravatar.cc/150?u=yourself"} 
+            alt="You" /* Changed from "Your Photo" for ESLint */
+            className="profile-photo" 
+          />
           <p>You</p>
         </div>
         <div className="similarity-score">
@@ -100,7 +120,7 @@ function MatchResultScreen({ userUploadedImage, onFindAnother, onStartOver }) {
           <input
             type="checkbox"
             checked={userOptInInstagram}
-            onChange={handleUserOptInInstagram}
+            onChange={handleUserOptInInstagramChange}
           />
           Share my Instagram handle if I match with others?
         </label>
@@ -110,8 +130,8 @@ function MatchResultScreen({ userUploadedImage, onFindAnother, onStartOver }) {
                 placeholder="Your Instagram Handle (e.g., your_name)"
                 className="insta-input"
                 value={userInstagramHandle}
-                onChange={(e) => setUserInstagramHandle(e.target.value)}
-                onBlur={handleUserOptInInstagram} // Save on blur or on a separate button
+                onChange={handleUserInstagramHandleChange}
+                onBlur={saveUserInstagramPreference} // Example: save when input loses focus
             />
         )}
       </div>
