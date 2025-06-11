@@ -9,8 +9,8 @@ import './App.css';
 function App() {
   const [currentView, setCurrentView] = useState('landing');
   const [uploadedImagePreview, setUploadedImagePreview] = useState(null);
-  // eslint-disable-next-line no-unused-vars  // <<< FIX 1: Added ESLint disable for unused variable
-  const [uploadedImageFile, setUploadedImageFile] = useState(null);
+ // eslint-disable-next-line no-unused-vars
+const [uploadedImageFile, setUploadedImageFile] = useState(null); // You can put your own comment here, OR on the line above the eslint-disable
 
   const faqRef = useRef(null);
   const tryLooksyRef = useRef(null);
