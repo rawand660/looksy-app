@@ -4,31 +4,26 @@ import UploadScreen from './components/UploadScreen';
 import MatchResultScreen from './components/MatchResultScreen';
 import FAQAccordion from './components/FAQAccordion';
 import WaitlistForm from './components/WaitlistForm';
-// **IMPORTANT**: Create placeholder SVGs or actual badge SVGs/PNGs in your `public` folder
-// For example, create `public/apple-store-badge-dark.svg` and `public/google-play-badge-dark.svg`
-// If you put them in `src/assets`, you'll need to import them:
-// import appleStoreBadgeDark from './assets/apple-store-badge-dark.svg';
-// import googlePlayBadgeDark from './assets/google-play-badge-dark.svg';
-// import resultsMockup from './assets/looksy-results-mockup.png'; // If screenshot is in src/assets
 import './App.css';
 
 function App() {
   const [currentView, setCurrentView] = useState('landing');
   const [uploadedImagePreview, setUploadedImagePreview] = useState(null);
-  const [uploadedImageFile, setUploadedImageFile] = useState(null); // Keep if used
+  // eslint-disable-next-line no-unused-vars  // <<< FIX 1: Added ESLint disable for unused variable
+  const [uploadedImageFile, setUploadedImageFile] = useState(null);
 
   const faqRef = useRef(null);
-  const tryLooksyRef = useRef(null); // Optional ref for scrolling
+  const tryLooksyRef = useRef(null);
 
   const handleImageUploaded = (previewUrl, imageFile) => {
     setUploadedImagePreview(previewUrl);
-    setUploadedImageFile(imageFile); // Store the file if needed
+    setUploadedImageFile(imageFile);
     setCurrentView('results');
   };
 
   const handleStartOver = () => {
     setUploadedImagePreview(null);
-    setUploadedImageFile(null);
+    setUploadedImageFile(null); // Keep this to clear the state if it was set
     setCurrentView('upload');
   };
 
@@ -36,7 +31,7 @@ function App() {
     { question: "How does Looksy work?", answer: "You upload a photo of your face. Our system (currently simulated with random matches) will then show you other users from our database who have a similar look. You'll see a similarity score and, if both you and your match opt-in, you can share Instagram handles to connect." },
     { question: "Is my photo stored? What about privacy?", answer: "Privacy is a core principle. When you upload, you'll have options to control if your image is stored for future matching or if it's only used for the current session. You also control if your Instagram handle is shared. We aim to be transparent about data usage." },
     { question: "How is the similarity percentage calculated?", answer: "For this MVP, the similarity score is randomly generated to simulate a real AI. In a full version, we would use advanced facial recognition AI to compare key facial features and calculate a precise visual similarity score." },
-    { question: "Can I connect with my matches?", answer: "Yes! If you find a match and both you and the other person have opted to share your Instagram handles, the handle will be displayed, allowing you to connect outside of Looksy." },
+    { question: "Can I connect with my matches?", answer: "Yes! If you find a match and both you and the other person have opted to share your Instagram handles, a way to see the handle will be displayed, allowing you to connect outside of Looksy." },
     { question: "Is this app free?", answer: "The current MVP/demo is free to use. Future pricing models will be determined based on features and operational costs." }
   ];
 
@@ -50,13 +45,12 @@ function App() {
     if (view === 'landing' && ref) {
       setCurrentView('landing');
       setTimeout(() => scrollToRef(ref), 0);
-    } else if (view === 'landing' && !ref) { // Handle clicking "Looksy" logo
+    } else if (view === 'landing' && !ref) {
       setCurrentView('landing');
-      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of landing
-    }
-     else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
       setCurrentView(view);
-      window.scrollTo(0, 0); // Scroll to top for non-landing views like upload/waitlist
+      window.scrollTo(0, 0);
     }
   };
 
@@ -77,13 +71,12 @@ function App() {
         {currentView === 'landing' && (
           <div className="long-landing-page">
             <section className="landing-section hero-section">
-              <div className="section-content-wrapper hero-content-wrapper"> {/* Use section-content-wrapper */}
-                <h2>Looksy - The AI-Driven Lookalike App</h2> {/* UPDATED HEADLINE */}
+              <div className="section-content-wrapper hero-content-wrapper">
+                <h2>Looksy - The AI-Driven Lookalike App</h2>
                 <p>Ever wondered who shares your features? Looksy connects you with visually similar individuals from our user-contributed community based on (simulated) AI facial similarity. Upload your photo, get matched, and optionally connect!</p>
                 <div className="landing-hero-visual">
                   <img
-                    src="/looksy-results-mockup.png" /* MAKE SURE THIS PATH IS CORRECT (e.g., from public folder) */
-                    // src={resultsMockup} // If imported from src/assets
+                    src="/looksy-results-mockup.png"
                     alt="Looksy App Interface Example"
                     className="app-screenshot-mockup"
                   />
@@ -146,34 +139,31 @@ function App() {
             </section>
 
             <section ref={faqRef} className="landing-section faq-section-landing">
-              <div className="section-content-wrapper"> {/* Added wrapper for consistency */}
-                {/* FAQAccordion will render its own h2 if defined within it, or style its container */}
+              <div className="section-content-wrapper">
                 <FAQAccordion items={faqData} />
               </div>
             </section>
 
-            {/* NEW DOWNLOAD SECTION */}
             <section className="landing-section download-app-section">
               <div className="section-content-wrapper">
                 <h2>Download Looksy</h2>
                 <div className="store-badges">
-                  <a href="#" className="store-badge" title="Download on the App Store (Coming Soon)">
-                    <img 
-                        src="/apple-store-badge-dark.svg" /* UPDATE THIS PATH (e.g., from public folder) */
-                        // src={appleStoreBadgeDark} // If imported from src/assets
-                        alt="Download on the App Store (Coming Soon)" 
+                  {/* FIX 2 & 3: Changed <a> to <div> and removed href attribute */}
+                  <div className="store-badge non-interactive-badge" title="Download on the App Store (Coming Soon)">
+                    <img
+                        src="/apple-store-badge-dark.svg" /* UPDATE THIS PATH */
+                        alt="Download on the App Store (Coming Soon)"
                     />
-                  </a>
-                  <a href="#" className="store-badge" title="Get it on Google Play (Coming Soon)">
-                    <img 
-                        src="/google-play-badge-dark.svg" /* UPDATE THIS PATH (e.g., from public folder) */
-                        // src={googlePlayBadgeDark} // If imported from src/assets
-                        alt="Get it on Google Play (Coming Soon)" 
+                  </div>
+                  <div className="store-badge non-interactive-badge" title="Get it on Google Play (Coming Soon)">
+                    <img
+                        src="/google-play-badge-dark.svg" /* UPDATE THIS PATH */
+                        alt="Get it on Google Play (Coming Soon)"
                     />
-                  </a>
+                  </div>
                 </div>
                 <p>
-                  Our app is launching soon on iOS and Android! 
+                  Our app is launching soon on iOS and Android!
                   <span className="coming-soon-text"> Stay tuned.</span>
                 </p>
               </div>

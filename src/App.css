@@ -410,3 +410,14 @@ body {
   /* color will be inherited from button's text color */
   /* For primary button (black text), demo text will be black. For secondary (white text), it will be white. */
 }
+/* src/App.css */
+/* ... (all other App.css styles) ... */
+
+/* Styles for non-interactive store badges */
+#root .store-badge.non-interactive-badge {
+  cursor: default; /* Override any potential pointer cursor from .store-badge */
+}
+
+#root .store-badge.non-interactive-badge img:hover {
+  opacity: 1; /* Prevent opacity change on hover if .store-badge img:hover had one */
+}
