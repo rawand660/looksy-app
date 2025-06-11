@@ -4,8 +4,6 @@ import UploadScreen from './components/UploadScreen';
 import MatchResultScreen from './components/MatchResultScreen';
 import FAQAccordion from './components/FAQAccordion';
 import WaitlistForm from './components/WaitlistForm';
-// Note: logo.png is in the public folder, so it's accessed via /logo.png
-// Social icons also assumed to be in public/icons/
 import './App.css';
 
 function App() {
@@ -59,8 +57,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        {/* Clickable Logo Area */}
         <div onClick={() => handleNavClick('landing')} className="logo-container">
+          {/* Assumes logo.png is in public folder */}
           <img src="/logo.png" alt="Looksy Logo" className="app-logo-img" />
           <span className="logo-text">Looksy</span>
         </div>
@@ -79,6 +77,7 @@ function App() {
                 <h2>Looksy - The AI-Driven Lookalike App</h2>
                 <p>Ever wondered who shares your features? Looksy connects you with visually similar individuals from our user-contributed community based on (simulated) AI facial similarity. Upload your photo, get matched, and optionally connect!</p>
                 <div className="landing-hero-visual">
+                  {/* Assumes looksy-results-mockup.png is in public folder */}
                   <img
                     src="/looksy-results-mockup.png"
                     alt="Looksy App Interface Example"
@@ -153,14 +152,16 @@ function App() {
                 <h2>Download Looksy</h2>
                 <div className="store-badges">
                   <a href="YOUR_APPLE_STORE_LINK_HERE_WHEN_READY" target="_blank" rel="noopener noreferrer" className="store-badge" title="Download on the App Store (Coming Soon)">
+                    {/* UPDATED IMAGE PATH */}
                     <img
-                        src="/icons/apple-store-badge-dark.svg" /* Replace with your actual badge image in public/icons/ */
+                        src="/apple-store-badge-dark.png"
                         alt="Download on the App Store (Coming Soon)"
                     />
                   </a>
                   <a href="YOUR_GOOGLE_PLAY_LINK_HERE_WHEN_READY" target="_blank" rel="noopener noreferrer" className="store-badge" title="Get it on Google Play (Coming Soon)">
+                    {/* UPDATED IMAGE PATH */}
                     <img
-                        src="/icons/google-play-badge-dark.svg" /* Replace with your actual badge image in public/icons/ */
+                        src="/google-play-badge-dark.png"
                         alt="Get it on Google Play (Coming Soon)"
                     />
                   </a>
@@ -203,12 +204,13 @@ function App() {
           <p>© {new Date().getFullYear()} Looksy. Your Face, Your Control.</p>
           <div className="social-links">
             <a href="YOUR_INSTAGRAM_URL" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Instagram">
-              <img src="/icons/instagram-white.svg" alt="Instagram" className="social-icon" />
+              {/* UPDATED IMAGE PATH */}
+              <img src="/instagram-white.png" alt="Instagram" className="social-icon" />
             </a>
             <a href="YOUR_TWITTER_URL" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Twitter (X)">
-              <img src="/icons/twitter-white.svg" alt="Twitter X" className="social-icon" />
+              {/* UPDATED IMAGE PATH */}
+              <img src="/twitter-white.png" alt="Twitter X" className="social-icon" />
             </a>
-            {/* Add more social links as needed */}
           </div>
         </div>
       </footer>
