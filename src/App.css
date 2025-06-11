@@ -1,12 +1,11 @@
-/* src/App.css - COMPLETE DARK THEME, ROUNDED CORNERS, INTER FONT */
+/* src/App.css - COMPLETE DARK THEME, ROUNDED CORNERS, INTER FONT, LOGO, SOCIALS */
 
 /* Import Google Font (Inter) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* Define rounded corner variable */
 :root {
-  --base-border-radius: 12px; /* Adjust as needed for desired roundness */
-  /* Example values: 8px for subtle, 12px for medium, 16px for more pronounced */
+  --base-border-radius: 12px;
 }
 
 body {
@@ -16,10 +15,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #121212; /* Main dark background */
-  color: #e0e0e0; /* Default light text color */
+  background-color: #121212;
+  color: #e0e0e0;
   line-height: 1.6;
-  font-weight: 400; /* Default font weight */
+  font-weight: 400;
 }
 
 #root .App {
@@ -31,43 +30,59 @@ body {
 
 /* --- App Header --- */
 #root .App-header {
-  background-color: #1f1f1f; /* Slightly lighter dark for header */
-  padding: 20px 30px;
-  color: #e0e0e0; /* Text color for header (if any besides h1/nav) */
-  border-bottom: 1px solid #333333; /* Darker border */
-  /* Flex properties for mobile (h1 above nav) */
+  background-color: #1f1f1f;
+  padding: 15px 30px; /* Adjusted padding */
+  color: #e0e0e0;
+  border-bottom: 1px solid #333333;
   display: flex;
-  flex-direction: column;
+  /* Default: logo and nav items will try to be side-by-side and space-between will work */
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between; /* Logo left, Nav right */
 }
 
-#root .App-header h1 { /* "Looksy" Name */
-  margin: 0 0 10px 0; /* Margin for mobile layout */
-  font-family: 'Inter', sans-serif;
-  font-size: 2.6rem;
-  font-weight: 700; /* Bold */
-  color: #ffffff; /* White for brand name */
-  letter-spacing: -0.5px;
-  cursor: pointer; /* From JS inline style, can add here too */
+#root .logo-container { /* This is the div wrapping logo image and text */
+  display: flex;
+  align-items: center;
+  gap: 10px; /* Space between image and text */
+  cursor: pointer;
+  text-decoration: none; /* Remove underline if it was an <a> */
 }
+
+.app-logo-img {
+  height: 35px; /* Adjust size as needed */
+  width: auto; /* Maintain aspect ratio */
+  display: block; /* Removes any extra space below if it's inline */
+}
+
+#root .logo-container .logo-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 2.2rem; /* Size of "Looksy" text */
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.5px;
+  /* Remove h1 default margins if .logo-container isn't an h1 */
+  margin: 0;
+}
+
 
 #root .App-header nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; /* Centers nav items if they wrap */
   gap: 10px;
+  /* No margin-left: auto needed if header is space-between */
 }
 
 #root .App-header nav button {
   margin: 0;
   padding: 9px 16px;
   background-color: transparent;
-  color: #cccccc; /* Lighter grey for nav links */
+  color: #cccccc;
   font-family: 'Inter', sans-serif;
-  font-weight: 500; /* Medium weight */
+  font-weight: 500;
   border: 1px solid transparent;
-  border-radius: var(--base-border-radius); /* Rounded nav buttons */
+  border-radius: var(--base-border-radius);
   cursor: pointer;
   font-size: 0.9rem;
   transition: all 0.2s ease-in-out;
@@ -77,118 +92,101 @@ body {
 
 #root .App-header nav button:hover,
 #root .App-header nav button:focus {
-  color: #ffffff; /* White on hover */
-  background-color: #333333; /* Darker grey background on hover */
+  color: #ffffff;
+  background-color: #333333;
   outline: none;
 }
 
-/* Tablet and Desktop header: Looksy name centered, nav to the right */
-@media (min-width: 768px) {
+/* On very small screens, stack logo and nav if desired */
+@media (max-width: 650px) { /* Adjust breakpoint as needed */
   #root .App-header {
-    flex-direction: row; /* Horizontal layout */
-    justify-content: space-between; /* This allows nav to go to the right */
-    align-items: center;
-    position: relative; /* For absolute centering of h1 */
-    padding-top: 25px; /* Adjust padding as needed */
-    padding-bottom: 25px;
+    flex-direction: column;
+    gap: 15px; /* Space between logo area and nav when stacked */
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
-
-  #root .App-header h1 {
-    margin: 0; /* Reset margin for absolute positioning */
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    /* color: #ffffff; /* Already set above, but good to confirm */
+  #root .logo-container {
+    /* No specific changes needed, will be centered by App-header's align-items */
   }
-
   #root .App-header nav {
-    margin-left: auto; /* Push nav to the far right */
+    /* No specific changes needed, will be centered by App-header's align-items */
   }
 }
 
+
 /* --- App Main Content Area --- */
 #root .App-main {
-  padding: 0; /* Sections will handle their own padding */
+  padding: 0;
   flex-grow: 1;
 }
 
 /* --- Styles for Long Landing Page Sections --- */
 #root .landing-section {
-  padding: 3rem 1.5rem; /* Vertical and horizontal padding for each section */
+  padding: 3rem 1.5rem;
 }
 #root .landing-section:last-child {
-  border-bottom: none; /* No border for the very last section */
+  border-bottom: none;
 }
-
-/* Alternate background colors for sections for visual separation */
-#root .landing-section:nth-child(even) { /* Style every other section differently */
-  background-color: #1f1f1f; /* Slightly lighter dark for alternate sections */
+#root .landing-section:nth-child(even) {
+  background-color: #1f1f1f;
 }
-#root .landing-section.hero-section { /* Keep hero consistent with body or specific dark */
-    background-color: #121212; /* Match body background for hero */
-    padding-top: 2rem; /* More top padding for hero */
-    padding-bottom: 3rem; /* More bottom padding for hero */
+#root .landing-section.hero-section {
+    background-color: #121212;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
 }
-
 
 #root .section-content-wrapper {
-  max-width: 900px; /* Max width for content within sections */
-  margin: 0 auto; /* Center the content */
-  text-align: center; /* Center section titles and content by default */
-}
-/* Specific wrapper for hero to ensure its content doesn't get default section padding if not desired */
-#root .hero-section .hero-content-wrapper {
-    /* No specific styles needed if it just inherits, or add padding here */
-    /* padding: 0; */ /* if hero-section handles all padding */
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-
-#root .landing-section h2 { /* General styling for section titles */
+#root .landing-section h2 {
   font-family: 'Inter', sans-serif;
   font-size: 2rem;
-  color: #ffffff; /* White section titles */
-  font-weight: 600; /* Semi-bold */
-  margin-bottom: 2rem; /* Space below section titles */
+  color: #ffffff;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
-#root .hero-section .hero-content-wrapper h2 { /* Hero Headline specific */
-    font-size: 2.4rem; /* Larger hero headline */
-    font-weight: 700; /* Bolder hero headline */
+#root .hero-section .hero-content-wrapper h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
     color: #ffffff;
     margin-bottom: 1rem;
 }
-#root .landing-section p { /* General paragraph styling in sections */
+#root .landing-section p {
   font-family: 'Inter', sans-serif;
   font-size: 1.05rem;
-  color: #cccccc; /* Lighter grey for paragraphs */
+  color: #cccccc;
   font-weight: 400;
-  margin-left: auto; /* Center paragraphs within their container */
+  margin-left: auto;
   margin-right: auto;
-  max-width: 700px; /* Constrain paragraph width for readability */
+  max-width: 700px;
   line-height: 1.7;
 }
-#root .hero-section .hero-content-wrapper p { /* Hero paragraph specific */
-  margin-bottom: 2rem; /* More space after hero paragraph */
+#root .hero-section .hero-content-wrapper p {
+  margin-bottom: 2rem;
 }
-
 
 /* Hero Visual (App Screenshot) */
 #root .landing-hero-visual {
-  margin: 2.5rem auto; /* Space around screenshot */
+  margin: 2.5rem auto;
   max-width: 600px;
-  padding: 0 1rem; /* Padding on sides if screen is narrow */
+  padding: 0 1rem;
 }
 #root .app-screenshot-mockup {
   width: 100%;
   height: auto;
-  border-radius: var(--base-border-radius); /* Rounded screenshot */
-  border: 1px solid #333333; /* Darker border */
+  border-radius: var(--base-border-radius);
+  border: 1px solid #333333;
   display: block;
   margin: 0 auto;
 }
 
 /* Call to Action Buttons Container */
 #root .cta-buttons {
-  margin-top: 2.5rem; /* Space above buttons */
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -201,27 +199,29 @@ body {
   }
 }
 
-
 /* How It Works Section */
 #root .how-it-works-section .steps-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  gap: 1.5rem; /* Adjusted gap */
+  gap: 1.5rem;
 }
 #root .how-it-works-section .step {
-  flex-basis: calc(25% - 1.5rem); /* Adjust for new gap */
-  min-width: 220px; /* Min width before wrapping */
+  flex-basis: calc(25% - 1.5rem);
+  min-width: 220px;
   padding: 1.5rem;
-  background-color: #1f1f1f; /* If section bg is #121212 */
-  /* If section bg is #1f1f1f, then step bg should be #121212 or #2a2a2a */
+  background-color: #1f1f1f;
   border: 1px solid #333333;
   border-radius: var(--base-border-radius);
   text-align: center;
 }
-#root .landing-section:nth-child(odd) .how-it-works-section .step {
-    background-color: #2a2a2a; /* Darker step if section is the lighter dark */
+#root .landing-section:nth-child(odd) .how-it-works-section .step { /* If main section bg is #121212 */
+    background-color: #1f1f1f;
 }
+#root .landing-section:nth-child(even) .how-it-works-section .step { /* If main section bg is #1f1f1f */
+    background-color: #2a2a2a; /* Make steps distinct */
+}
+
 
 #root .how-it-works-section .step-icon {
   font-size: 1.5rem;
@@ -246,25 +246,29 @@ body {
   font-size: 0.95rem;
   color: #b0b0b0;
   line-height: 1.6;
-  max-width: none; /* Allow step paragraph to fill its box */
+  max-width: none;
 }
 
 /* Features Section */
 #root .features-section .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem; /* Adjusted gap */
+  gap: 1.5rem;
 }
 #root .features-section .feature-item {
   padding: 1.5rem;
-  background-color: #1f1f1f; /* Consistent with step items or alternate */
+  background-color: #1f1f1f;
   border: 1px solid #333333;
   border-radius: var(--base-border-radius);
   text-align: left;
 }
 #root .landing-section:nth-child(odd) .features-section .feature-item {
+    background-color: #1f1f1f;
+}
+#root .landing-section:nth-child(even) .features-section .feature-item {
     background-color: #2a2a2a;
 }
+
 #root .features-section .feature-item h3 {
   font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
@@ -277,59 +281,46 @@ body {
   font-size: 0.95rem;
   color: #b0b0b0;
   line-height: 1.6;
-  max-width: none; /* Allow feature paragraph to fill its box */
+  max-width: none;
 }
 
 /* FAQ Section on Landing Page */
-#root .faq-section-landing {
-  /* Background color will alternate based on :nth-child(even) rule for .landing-section */
-}
 #root .faq-section-landing .faq-accordion {
-  max-width: 800px; /* Container for accordion within the section */
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
-/* If FAQAccordion component has its own H2, that H2 needs dark theme styles */
-/* The FAQAccordion.css file should handle its internal dark theme styling */
-
 
 /* Download App Section */
-#root .download-app-section p { /* Paragraph below badges */
+#root .download-app-section p {
     color: #cccccc;
-    margin-bottom: 0.5rem; /* Reduced margin */
+    margin-bottom: 0.5rem;
     margin-top: 1.5rem;
-    font-size: 1rem; /* Slightly smaller */
+    font-size: 1rem;
 }
-#root .download-app-section .coming-soon-text { /* For "Stay tuned" span or similar */
+#root .download-app-section .coming-soon-text {
     font-weight: 500;
     opacity: 0.8;
-    /* color: #a0a0a0; */ /* Can make it dimmer if needed */
 }
 #root .store-badges {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem; /* Reduced gap */
-  margin: 1.5rem 0; /* Adjusted margin */
+  gap: 1rem;
+  margin: 1.5rem 0;
   flex-wrap: wrap;
 }
 #root .store-badge img {
-  height: 45px; /* Slightly smaller badges */
+  height: 45px;
   width: auto;
   display: block;
   transition: opacity 0.2s ease;
-  /* For official dark theme badges, no filter needed. */
-  /* If using light badges and trying to adapt: */
-  /* filter: invert(1) brightness(1.2) contrast(0.9) grayscale(0.2); */
 }
 #root .store-badge img:hover {
     opacity: 0.85;
 }
 
 /* Final CTA Section */
-#root .final-cta-section {
-  /* background color will alternate */
-}
 #root .final-cta-section p {
   max-width: 600px;
   margin-left: auto;
@@ -339,52 +330,84 @@ body {
 
 /* --- App Footer --- */
 #root .App-footer {
-  padding: 25px;
+  padding: 20px 30px;
   font-family: 'Inter', sans-serif;
   font-size: 0.85rem;
   font-weight: 400;
-  color: #a0a0a0; /* Lighter grey for footer text */
-  border-top: 1px solid #333333; /* Darker border */
+  color: #a0a0a0;
+  border-top: 1px solid #333333;
   margin-top: auto;
-  background-color: #1f1f1f; /* Match header dark */
+  background-color: #1f1f1f;
 }
+#root .footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+@media (min-width: 768px) {
+  #root .footer-content {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+#root .social-links {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+#root .social-links a {
+  display: inline-block;
+}
+.social-icon {
+  height: 20px;
+  width: 20px;
+  /* For SVG img tags, ensure the SVG file itself is white or light colored */
+  /* If using inline SVGs or SVG components, you could use fill: #a0a0a0; */
+  transition: opacity 0.2s ease;
+}
+#root .social-links a:hover .social-icon {
+  opacity: 0.7;
+}
+
 
 /* --- Global Button Styles (Dark Theme) --- */
 #root .button-primary,
 #root .button-secondary {
   font-family: 'Inter', sans-serif;
   padding: 0.8rem 1.7rem;
-  border-radius: var(--base-border-radius); /* Rounded buttons */
+  border-radius: var(--base-border-radius);
   font-size: 0.95rem;
-  font-weight: 600; /* Semi-bold buttons */
+  font-weight: 600;
   cursor: pointer;
   text-decoration: none;
   display: inline-block;
   text-transform: uppercase;
   letter-spacing: 0.75px;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
-  line-height: 1.5; /* Ensure text is vertically centered nicely */
+  line-height: 1.5;
 }
 
 #root .button-primary {
-  background-color: #ffffff; /* White background for primary button */
-  color: #000000; /* Black text */
-  border: 1px solid #ffffff; /* White border */
+  background-color: #ffffff;
+  color: #000000;
+  border: 1px solid #ffffff;
 }
 #root .button-primary:hover {
-  background-color: #e0e0e0; /* Light grey hover */
+  background-color: #e0e0e0;
   border-color: #e0e0e0;
   color: #000000;
   transform: translateY(-1px);
 }
 
 #root .button-secondary {
-  background-color: transparent; /* Transparent background */
-  color: #ffffff; /* White text */
-  border: 1px solid #ffffff; /* White border */
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #ffffff;
 }
 #root .button-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Slight white overlay on hover */
+  background-color: rgba(255, 255, 255, 0.1);
   color: #ffffff;
   border-color: #ffffff;
   transform: translateY(-1px);
@@ -401,23 +424,10 @@ body {
     font-size: 1.05rem;
 }
 
-#root .demo-text { /* For (Demo) text on buttons */
-  font-size: 0.8em; /* Relative to button font size */
-  font-weight: 400; /* Lighter than button text */
+#root .demo-text {
+  font-size: 0.8em;
+  font-weight: 400;
   opacity: 0.85;
   margin-left: 0.3em;
-  text-transform: none; /* Keep (Demo) in normal case */
-  /* color will be inherited from button's text color */
-  /* For primary button (black text), demo text will be black. For secondary (white text), it will be white. */
-}
-/* src/App.css */
-/* ... (all other App.css styles) ... */
-
-/* Styles for non-interactive store badges */
-#root .store-badge.non-interactive-badge {
-  cursor: default; /* Override any potential pointer cursor from .store-badge */
-}
-
-#root .store-badge.non-interactive-badge img:hover {
-  opacity: 1; /* Prevent opacity change on hover if .store-badge img:hover had one */
+  text-transform: none;
 }

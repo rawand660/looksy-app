@@ -4,13 +4,15 @@ import UploadScreen from './components/UploadScreen';
 import MatchResultScreen from './components/MatchResultScreen';
 import FAQAccordion from './components/FAQAccordion';
 import WaitlistForm from './components/WaitlistForm';
+// Note: logo.png is in the public folder, so it's accessed via /logo.png
+// Social icons also assumed to be in public/icons/
 import './App.css';
 
 function App() {
   const [currentView, setCurrentView] = useState('landing');
   const [uploadedImagePreview, setUploadedImagePreview] = useState(null);
- // eslint-disable-next-line no-unused-vars
-const [uploadedImageFile, setUploadedImageFile] = useState(null); // You can put your own comment here, OR on the line above the eslint-disable
+  // eslint-disable-next-line no-unused-vars
+  const [uploadedImageFile, setUploadedImageFile] = useState(null);
 
   const faqRef = useRef(null);
   const tryLooksyRef = useRef(null);
@@ -23,7 +25,7 @@ const [uploadedImageFile, setUploadedImageFile] = useState(null); // You can put
 
   const handleStartOver = () => {
     setUploadedImagePreview(null);
-    setUploadedImageFile(null); // Keep this to clear the state if it was set
+    setUploadedImageFile(null);
     setCurrentView('upload');
   };
 
@@ -57,9 +59,11 @@ const [uploadedImageFile, setUploadedImageFile] = useState(null); // You can put
   return (
     <div className="App">
       <header className="App-header">
-        <h1 onClick={() => handleNavClick('landing')} style={{ cursor: 'pointer' }}>
-          Looksy
-        </h1>
+        {/* Clickable Logo Area */}
+        <div onClick={() => handleNavClick('landing')} className="logo-container">
+          <img src="/logo.png" alt="Looksy Logo" className="app-logo-img" />
+          <span className="logo-text">Looksy</span>
+        </div>
         <nav>
           <button onClick={() => handleNavClick('upload')}>Try Looksy</button>
           <button onClick={() => handleNavClick('landing', faqRef)}>FAQ</button>
@@ -148,19 +152,18 @@ const [uploadedImageFile, setUploadedImageFile] = useState(null); // You can put
               <div className="section-content-wrapper">
                 <h2>Download Looksy</h2>
                 <div className="store-badges">
-                  {/* FIX 2 & 3: Changed <a> to <div> and removed href attribute */}
-                  <div className="store-badge non-interactive-badge" title="Download on the App Store (Coming Soon)">
+                  <a href="YOUR_APPLE_STORE_LINK_HERE_WHEN_READY" target="_blank" rel="noopener noreferrer" className="store-badge" title="Download on the App Store (Coming Soon)">
                     <img
-                        src="/apple-store-badge-dark.svg" /* UPDATE THIS PATH */
+                        src="/icons/apple-store-badge-dark.svg" /* Replace with your actual badge image in public/icons/ */
                         alt="Download on the App Store (Coming Soon)"
                     />
-                  </div>
-                  <div className="store-badge non-interactive-badge" title="Get it on Google Play (Coming Soon)">
+                  </a>
+                  <a href="YOUR_GOOGLE_PLAY_LINK_HERE_WHEN_READY" target="_blank" rel="noopener noreferrer" className="store-badge" title="Get it on Google Play (Coming Soon)">
                     <img
-                        src="/google-play-badge-dark.svg" /* UPDATE THIS PATH */
+                        src="/icons/google-play-badge-dark.svg" /* Replace with your actual badge image in public/icons/ */
                         alt="Get it on Google Play (Coming Soon)"
                     />
-                  </div>
+                  </a>
                 </div>
                 <p>
                   Our app is launching soon on iOS and Android!
@@ -196,7 +199,18 @@ const [uploadedImageFile, setUploadedImageFile] = useState(null); // You can put
       </main>
 
       <footer className="App-footer">
-        <p>© {new Date().getFullYear()} Looksy. Your Face, Your Control.</p>
+        <div className="footer-content">
+          <p>© {new Date().getFullYear()} Looksy. Your Face, Your Control.</p>
+          <div className="social-links">
+            <a href="YOUR_INSTAGRAM_URL" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Instagram">
+              <img src="/icons/instagram-white.svg" alt="Instagram" className="social-icon" />
+            </a>
+            <a href="YOUR_TWITTER_URL" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Twitter (X)">
+              <img src="/icons/twitter-white.svg" alt="Twitter X" className="social-icon" />
+            </a>
+            {/* Add more social links as needed */}
+          </div>
+        </div>
       </footer>
     </div>
   );
