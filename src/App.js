@@ -58,7 +58,6 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div onClick={() => handleNavClick('landing')} className="logo-container">
-          {/* Assumes logo.png is in public folder */}
           <img src="/logo.png" alt="Looksy Logo" className="app-logo-img" />
           <span className="logo-text">Looksy</span>
         </div>
@@ -76,14 +75,20 @@ function App() {
               <div className="section-content-wrapper hero-content-wrapper">
                 <h2>Looksy - The AI-Driven Lookalike App</h2>
                 <p>Ever wondered who shares your features? Looksy connects you with visually similar individuals from our user-contributed community based on (simulated) AI facial similarity. Upload your photo, get matched, and optionally connect!</p>
+                
+                {/* 1. REMOVE INTERFACE EXAMPLE IMAGE (OR COMMENT OUT) */}
+                {/* 
                 <div className="landing-hero-visual">
-                  {/* Assumes looksy-results-mockup.png is in public folder */}
                   <img
                     src="/looksy-results-mockup.png"
                     alt="Looksy App Interface Example"
                     className="app-screenshot-mockup"
                   />
                 </div>
+                */}
+                {/* Add some space if the image is removed */}
+                <div style={{height: '30px'}}></div> 
+
                 <div ref={tryLooksyRef} className="cta-buttons">
                    <button onClick={() => handleNavClick('upload')} className="button-primary large">
                      Find My Lookalike Now <span className="demo-text">(Demo)</span>
@@ -151,20 +156,18 @@ function App() {
               <div className="section-content-wrapper">
                 <h2>Download Looksy</h2>
                 <div className="store-badges">
-                  <a href="YOUR_APPLE_STORE_LINK_HERE_WHEN_READY" target="_blank" rel="noopener noreferrer" className="store-badge" title="Download on the App Store (Coming Soon)">
-                    {/* UPDATED IMAGE PATH */}
+                  <div className="store-badge non-interactive-badge" title="Download on the App Store (Coming Soon)">
                     <img
                         src="/apple-store-badge-dark.png"
                         alt="Download on the App Store (Coming Soon)"
                     />
-                  </a>
-                  <a href="YOUR_GOOGLE_PLAY_LINK_HERE_WHEN_READY" target="_blank" rel="noopener noreferrer" className="store-badge" title="Get it on Google Play (Coming Soon)">
-                    {/* UPDATED IMAGE PATH */}
+                  </div>
+                  <div className="store-badge non-interactive-badge" title="Get it on Google Play (Coming Soon)">
                     <img
                         src="/google-play-badge-dark.png"
                         alt="Get it on Google Play (Coming Soon)"
                     />
-                  </a>
+                  </div>
                 </div>
                 <p>
                   Our app is launching soon on iOS and Android!
@@ -177,9 +180,10 @@ function App() {
                 <div className="section-content-wrapper">
                     <h2>Ready to Find Your Lookalike?</h2>
                     <p>Join our waitlist to be the first to know when we fully launch, or try the demo now!</p>
-                    <div className="cta-buttons">
+                    <div className="cta-buttons"> {/* Ensure these buttons use .large class */}
+                        {/* 2. CHANGE TEXT OF THIS BUTTON */}
                         <button onClick={() => handleNavClick('upload')} className="button-primary large">
-                            Try the Demo <span className="demo-text">(Now)</span>
+                            Find My Lookalike Now <span className="demo-text">(Demo)</span>
                         </button>
                         <button onClick={() => handleNavClick('waitlist')} className="button-secondary large">
                             Join Official Waitlist
@@ -204,11 +208,9 @@ function App() {
           <p>© {new Date().getFullYear()} Looksy. Your Face, Your Control.</p>
           <div className="social-links">
             <a href="YOUR_INSTAGRAM_URL" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Instagram">
-              {/* UPDATED IMAGE PATH */}
               <img src="/instagram-white.png" alt="Instagram" className="social-icon" />
             </a>
             <a href="YOUR_TWITTER_URL" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Twitter (X)">
-              {/* UPDATED IMAGE PATH */}
               <img src="/twitter-white.png" alt="Twitter X" className="social-icon" />
             </a>
           </div>

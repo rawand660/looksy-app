@@ -1,4 +1,4 @@
-/* src/App.css - COMPLETE DARK THEME, ROUNDED CORNERS, INTER FONT, LOGO, SOCIALS */
+/* src/App.css - COMPLETE DARK THEME, ROUNDED CORNERS, INTER FONT, LOGO, SOCIALS, CTA BUTTON SIZING */
 
 /* Import Google Font (Inter) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -15,10 +15,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #121212;
-  color: #e0e0e0;
+  background-color: #121212; /* Main dark background */
+  color: #e0e0e0; /* Default light text color */
   line-height: 1.6;
-  font-weight: 400;
+  font-weight: 400; /* Default font weight */
 }
 
 #root .App {
@@ -30,48 +30,44 @@ body {
 
 /* --- App Header --- */
 #root .App-header {
-  background-color: #1f1f1f;
-  padding: 15px 30px; /* Adjusted padding */
+  background-color: #1f1f1f; /* Slightly lighter dark for header */
+  padding: 15px 30px;
   color: #e0e0e0;
-  border-bottom: 1px solid #333333;
+  border-bottom: 1px solid #333333; /* Darker border */
   display: flex;
-  /* Default: logo and nav items will try to be side-by-side and space-between will work */
-  flex-direction: row;
+  flex-direction: row; /* Default to row for logo left, nav right */
   align-items: center;
-  justify-content: space-between; /* Logo left, Nav right */
+  justify-content: space-between;
 }
 
-#root .logo-container { /* This is the div wrapping logo image and text */
+#root .logo-container {
   display: flex;
   align-items: center;
-  gap: 10px; /* Space between image and text */
+  gap: 10px;
   cursor: pointer;
-  text-decoration: none; /* Remove underline if it was an <a> */
+  text-decoration: none;
 }
 
 .app-logo-img {
-  height: 35px; /* Adjust size as needed */
-  width: auto; /* Maintain aspect ratio */
-  display: block; /* Removes any extra space below if it's inline */
+  height: 35px;
+  width: auto;
+  display: block;
 }
 
 #root .logo-container .logo-text {
   font-family: 'Inter', sans-serif;
-  font-size: 2.2rem; /* Size of "Looksy" text */
+  font-size: 2.2rem;
   font-weight: 700;
   color: #ffffff;
   letter-spacing: -0.5px;
-  /* Remove h1 default margins if .logo-container isn't an h1 */
   margin: 0;
 }
-
 
 #root .App-header nav {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; /* Centers nav items if they wrap */
+  justify-content: center;
   gap: 10px;
-  /* No margin-left: auto needed if header is space-between */
 }
 
 #root .App-header nav button {
@@ -97,26 +93,19 @@ body {
   outline: none;
 }
 
-/* On very small screens, stack logo and nav if desired */
-@media (max-width: 650px) { /* Adjust breakpoint as needed */
+/* On very small screens, stack logo and nav */
+@media (max-width: 650px) {
   #root .App-header {
     flex-direction: column;
-    gap: 15px; /* Space between logo area and nav when stacked */
+    gap: 15px;
     padding-top: 20px;
     padding-bottom: 20px;
   }
-  #root .logo-container {
-    /* No specific changes needed, will be centered by App-header's align-items */
-  }
-  #root .App-header nav {
-    /* No specific changes needed, will be centered by App-header's align-items */
-  }
 }
-
 
 /* --- App Main Content Area --- */
 #root .App-main {
-  padding: 0;
+  padding: 0; /* Sections will handle their own padding */
   flex-grow: 1;
 }
 
@@ -169,11 +158,12 @@ body {
   margin-bottom: 2rem;
 }
 
-/* Hero Visual (App Screenshot) */
+/* Hero Visual (App Screenshot) - styles remain even if img is commented out in JS */
 #root .landing-hero-visual {
   margin: 2.5rem auto;
   max-width: 600px;
   padding: 0 1rem;
+  min-height: 50px; /* To maintain some space if image is removed */
 }
 #root .app-screenshot-mockup {
   width: 100%;
@@ -188,16 +178,34 @@ body {
 #root .cta-buttons {
   margin-top: 2.5rem;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* Default: Stacked on mobile */
   gap: 1rem;
   align-items: center;
 }
+
+/* Ensure buttons in CTA have a consistent behavior when stacked */
+#root .cta-buttons .button-primary,
+#root .cta-buttons .button-secondary {
+  width: auto; /* Allow button to size to content + padding by default */
+  min-width: 240px; /* UPDATED: Set a minimum width for better alignment when stacked */
+  max-width: 350px; /* UPDATED: Prevent buttons from getting too wide on mobile */
+  box-sizing: border-box; /* Ensure padding and border are included in width/height */
+}
+
 @media (min-width: 600px) {
   #root .cta-buttons {
-    flex-direction: row;
+    flex-direction: row; /* Side-by-side on larger screens */
     justify-content: center;
   }
+  /* On larger screens, reset width constraints if needed, let flexbox handle it */
+  #root .cta-buttons .button-primary,
+  #root .cta-buttons .button-secondary {
+    min-width: 0;
+    max-width: none;
+    width: auto; /* Sizes to content + padding defined in global button styles */
+  }
 }
+
 
 /* How It Works Section */
 #root .how-it-works-section .steps-container {
@@ -215,13 +223,12 @@ body {
   border-radius: var(--base-border-radius);
   text-align: center;
 }
-#root .landing-section:nth-child(odd) .how-it-works-section .step { /* If main section bg is #121212 */
-    background-color: #1f1f1f;
+#root .landing-section:nth-child(odd) .how-it-works-section .step {
+    background-color: #1f1f1f; /* Base dark */
 }
-#root .landing-section:nth-child(even) .how-it-works-section .step { /* If main section bg is #1f1f1f */
-    background-color: #2a2a2a; /* Make steps distinct */
+#root .landing-section:nth-child(even) .how-it-works-section .step {
+    background-color: #2a2a2a; /* Slightly lighter dark if section is #1f1f1f */
 }
-
 
 #root .how-it-works-section .step-icon {
   font-size: 1.5rem;
@@ -319,6 +326,14 @@ body {
 #root .store-badge img:hover {
     opacity: 0.85;
 }
+/* For non-interactive badges, if needed (JS has class non-interactive-badge) */
+#root .store-badge.non-interactive-badge {
+  cursor: default;
+}
+#root .store-badge.non-interactive-badge img:hover {
+  opacity: 1;
+}
+
 
 /* Final CTA Section */
 #root .final-cta-section p {
@@ -363,8 +378,6 @@ body {
 .social-icon {
   height: 20px;
   width: 20px;
-  /* For SVG img tags, ensure the SVG file itself is white or light colored */
-  /* If using inline SVGs or SVG components, you could use fill: #a0a0a0; */
   transition: opacity 0.2s ease;
 }
 #root .social-links a:hover .social-icon {
@@ -386,7 +399,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.75px;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
-  line-height: 1.5;
+  line-height: 1.5; /* Ensure text is vertically centered nicely */
+  box-sizing: border-box; /* Ensure padding and border are part of the total width/height */
 }
 
 #root .button-primary {
