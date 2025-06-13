@@ -1,57 +1,77 @@
 // src/components/MatchResultScreen.js
 import React, { useState, useEffect } from 'react';
-import './MatchResultScreen.css'; // This line imports the CSS file
+import './MatchResultScreen.css'; // Ensure this CSS file has the dark theme updates
 
-// Sample "database" of potential matches
-const fakeMatchesDb = [
-  { id: '1', name: "Alex P.", photo: "https://i.pravatar.cc/300?img=1", insta: "alex_p_looks" },
-  { id: '2', name: "Jordan B.", photo: "https://i.pravatar.cc/300?img=2", insta: null },
-  { id: '3', name: "Casey L.", photo: "https://i.pravatar.cc/300?img=3", insta: "casey_looks_fab" },
-  { id: '4', name: "Morgan R.", photo: "https://i.pravatar.cc/300?img=4", insta: "morgan_r_official" },
-  { id: '5', name: "Riley S.", photo: "https://i.pravatar.cc/300?img=5", insta: null },
-  { id: '6', name: "Devon K.", photo: "https://i.pravatar.cc/300?img=7", insta: "devon_k_style" },
-  { id: '7', name: "Sam W.", photo: "https://i.pravatar.cc/300?img=8", insta: null }
-];
+// Helper function to generate a fake name
+const firstNames = ["Alex", "Jordan", "Casey", "Morgan", "Riley", "Devon", "Sam", "Taylor", "Chris", "Jamie"];
+const lastInitials = ["P.", "B.", "L.", "R.", "S.", "K.", "W.", "M.", "J.", "T."];
 
-function getSimulatedMatch() {
-  const randomMatchData = fakeMatchesDb[Math.floor(Math.random() * fakeMatchesDb.length)];
-  return {
-    ...randomMatchData,
-    similarity: Math.floor(Math.random() * (95 - 70 + 1)) + 70 // Score between 70-95%
-  };
+function generateFakeName() {
+  const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+  const lastNameInitial = lastInitials[Math.floor(Math.random() * lastInitials.length)];
+  return `${firstName} ${lastNameInitial}`;
 }
 
-function MatchResultScreen({ userUploadedImage, onFindAnother, onStartOver }) {
-  const [match, setMatch] = useState(null);
-  const [showInstagram, setShowInstagram] = useState(false);
+// Function to fetch an image from ThisPersonDoesNotExist.com
+async function fetchAiFace() {
+  try {
+    // Adding a timestamp or random query param to try and bypass cache
+    const response = await fetch(`https://thispersondoesnotexist.com/?${new Date().getTime()}`);
+    if (!response.ok) {
+      throw new Error('Network response was not ok for AI face');
+    }
+    const imageBlob = await response.blob();
+    const imageObjectURL = URL.createObjectURL(imageBlob);
+    return imageObjectURL;
+  } catch (error) {
+    console.error("Error fetching AI face:", error);
+    // Fallback to a placeholder if the fetch fails
+    return `https://i.pravatar.cc/300?img=${Math.floor(Math.random() * 70) + 1}`; // Pravatar as fallback
+  }
+}
+
+
+function MatchResultScreen({ userUploadedImage, onStartOver }) { // Removed onFindAnother for now as it's handled internally
+  const [match, setMatch] = useState(null); // Will store { name, photo, similarity }
+  const [isLoadingMatch, setIsLoadingMatch] = useState(true);
+  const [showInstagram, setShowInstagram] = useState(false); // Keep this for UI consistency
   const [userOptInInstagram, setUserOptInInstagram] = useState(false);
   const [userInstagramHandle, setUserInstagramHandle] = useState('');
 
-  useEffect(() => {
-    // Simulate fetching a match when the component mounts or userUploadedImage changes
-    const fetchedMatch = getSimulatedMatch();
-    setMatch(fetchedMatch);
-    setShowInstagram(false); // Reset for new match
-  }, [userUploadedImage]); // Re-fetch if a new image is "processed" (or component mounts)
+  const findNewMatch = async () => {
+    setIsLoadingMatch(true);
+    setMatch(null); // Clear previous match
+    setShowInstagram(false); // Reset checkbox
 
-  const handleFindAnother = () => {
-    const newMatch = getSimulatedMatch();
-    setMatch(newMatch);
-    setShowInstagram(false); // Reset the checkbox for the new match
-    if(onFindAnother) onFindAnother(); // Call prop if it exists (though it's not currently used)
-  }
+    // Simulate a slight delay for "processing"
+    await new Promise(resolve => setTimeout(resolve, 1500)); // 1.5 second delay
 
-  const handleShowInstagramToggle = (e) => {
-    setShowInstagram(e.target.checked);
+    const aiMatchPhoto = await fetchAiFace();
+    const newMatchData = {
+      name: generateFakeName(),
+      photo: aiMatchPhoto,
+      similarity: Math.floor(Math.random() * (95 - 70 + 1)) + 70, // Score 70-95%
+      insta: Math.random() > 0.5 ? `${generateFakeName().toLowerCase().replace(/\s+/g, '_').replace('.', '')}_looks` : null // 50% chance of having an insta
+    };
+    setMatch(newMatchData);
+    setIsLoadingMatch(false);
   };
 
-  const handleUserOptInInstagramChange = (e) => { // Renamed for clarity
+  useEffect(() => {
+    findNewMatch(); // Fetch the first match when component mounts or userUploadedImage changes
+
+    // Cleanup function to revoke the object URL when the component unmounts or the image changes
+    return () => {
+      if (match && match.photo && match.photo.startsWith('blob:')) {
+        URL.revokeObjectURL(match.photo);
+      }
+    };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userUploadedImage]); // Re-fetch if a new image is "processed" (or on mount)
+
+
+  const handleUserOptInInstagramChange = (e) => {
     setUserOptInInstagram(e.target.checked);
-    // In a real app, you'd save this preference along with the handle
-    if (!e.target.checked) {
-        // Optionally clear handle if they uncheck, or keep it
-        // setUserInstagramHandle('');
-    }
     console.log("User Instagram opt-in:", e.target.checked, "Handle:", userInstagramHandle);
   };
 
@@ -59,15 +79,20 @@ function MatchResultScreen({ userUploadedImage, onFindAnother, onStartOver }) {
     setUserInstagramHandle(e.target.value);
   };
 
-  const saveUserInstagramPreference = () => { // Example function if you had a save button
-    // This is where you would send userOptInInstagram and userInstagramHandle to your backend
+  const saveUserInstagramPreference = () => {
     console.log("Saving user Instagram preference:", userOptInInstagram, "Handle:", userInstagramHandle);
-    // alert("Preference (simulated) saved!");
   };
 
 
-  if (!match) {
-    return <div className="loading-results">Finding your match...</div>;
+  if (isLoadingMatch || !match) {
+    return (
+      <div className="match-result-screen loading-active"> {/* Added class for loading state */}
+        <div className="loading-results">
+          <div className="spinner"></div> {/* Simple CSS spinner */}
+          Finding your lookalike...
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -75,10 +100,10 @@ function MatchResultScreen({ userUploadedImage, onFindAnother, onStartOver }) {
       <h2>We Found a Match!</h2>
       <div className="match-container">
         <div className="user-photo-container">
-          <img 
-            src={userUploadedImage || "https://i.pravatar.cc/150?u=yourself"} 
-            alt="You" /* Changed from "Your Photo" for ESLint */
-            className="profile-photo" 
+          <img
+            src={userUploadedImage || `https://i.pravatar.cc/150?u=yourself${Date.now()}`} // Default placeholder
+            alt="You"
+            className="profile-photo"
           />
           <p>You</p>
         </div>
@@ -98,7 +123,7 @@ function MatchResultScreen({ userUploadedImage, onFindAnother, onStartOver }) {
             <input
               type="checkbox"
               checked={showInstagram}
-              onChange={handleShowInstagramToggle}
+              onChange={(e) => setShowInstagram(e.target.checked)}
             />
             Show {match.name}'s Instagram (if they've shared it)?
           </label>
@@ -131,13 +156,13 @@ function MatchResultScreen({ userUploadedImage, onFindAnother, onStartOver }) {
                 className="insta-input"
                 value={userInstagramHandle}
                 onChange={handleUserInstagramHandleChange}
-                onBlur={saveUserInstagramPreference} // Example: save when input loses focus
+                onBlur={saveUserInstagramPreference}
             />
         )}
       </div>
 
       <div className="result-actions">
-        <button onClick={handleFindAnother} className="button-secondary">Find Another Match</button>
+        <button onClick={findNewMatch} className="button-secondary">Find Another Match</button>
         <button onClick={() => { if(onStartOver) onStartOver(); }} className="button-primary">Upload New Photo</button>
       </div>
     </div>

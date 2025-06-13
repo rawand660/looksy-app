@@ -167,3 +167,39 @@
 #root .result-actions {
     margin-top: 1rem;
 }
+/* src/components/MatchResultScreen.css */
+/* ... (all existing dark theme styles for this file remain) ... */
+
+/* Loading State Styles */
+#root .match-result-screen.loading-active { /* Applied when isLoadingMatch is true */
+  min-height: 400px; /* Ensure it has some height while loading */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#root .loading-results {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.2rem;
+  color: #a0a0a0; /* Lighter grey */
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Simple CSS Spinner */
+#root .spinner {
+  border: 5px solid #444444; /* Darker border for spinner track */
+  border-top: 5px solid #ffffff; /* White for the spinning part */
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
