@@ -207,10 +207,10 @@ function App() {
         <div className="footer-content">
           <p>© {new Date().getFullYear()} Looksy. Your Face, Your Control.</p>
           <div className="social-links">
-            <a href="YOUR_INSTAGRAM_URL" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Instagram">
+            <a href="https://www.instagram.com/looksy_ai?igsh=aW16NjdmcWdweDR5&utm_source=qrRL" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Instagram">
               <img src="/instagram-white.png" alt="Instagram" className="social-icon" />
             </a>
-            <a href="YOUR_TWITTER_URL" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Twitter (X)">
+            <a href="https://x.com/looksy_ai?s=21&t=rVRUVacIChxYyWOcqjAP_Q" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Twitter (X)">
               <img src="/twitter-white.png" alt="Twitter X" className="social-icon" />
             </a>
           </div>
