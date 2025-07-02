@@ -13,7 +13,7 @@ function MatchResultScreen({ userUploadedImage, onStartOver, uploadedImageFileOb
   const [userOptInInstagram, setUserOptInInstagram] = useState(false);
   const [userInstagramHandle, setUserInstagramHandle] = useState('');
 
-const BACKEND_URL = 'https://looksy-backend.onrender.com';
+const BACKEND_URL = 'https://looksy-backend-1.onrender.com'; // <<< YOUR NEW, CORRECT URL
 
   const fetchAndSetMatches = async () => {
     console.log("---- fetchAndSetMatches CALLED ----");
