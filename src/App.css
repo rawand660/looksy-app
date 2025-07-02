@@ -445,3 +445,61 @@ body {
   margin-left: 0.3em;
   text-transform: none;
 }
+/* src/App.css */
+/* --- APPEND THESE STYLES FOR FINAL UI POLISH --- */
+
+/* Hero Icon Style */
+#root .hero-icon {
+  height: 80px; /* Adjust size */
+  width: 80px; /* Adjust size */
+  margin-bottom: 1.5rem;
+  /* If it's a white SVG, you might not need a filter. */
+  /* If it's a black SVG you want to make white: */
+  /* filter: invert(1) brightness(2); */
+}
+
+/* Updated hero section spacing */
+#root .hero-section .hero-content-wrapper {
+  padding-bottom: 1rem; /* Less padding at bottom since there's no image */
+}
+#root .hero-section .landing-hero-visual {
+  min-height: 0; /* Remove min-height since screenshot is gone */
+  margin: 0 auto 1.5rem auto; /* Adjust margin */
+}
+
+/* How It Works Section - Icon Styling */
+#root .how-it-works-section .step-icon {
+  background-color: transparent; /* Remove colored circle background */
+  border: 2px solid #444444; /* Use a subtle border instead */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#root .how-it-works-section .step-icon img {
+  height: 24px; /* Size of icon inside the circle */
+  width: 24px;
+}
+/* Re-style step titles to use numbers again */
+#root .how-it-works-section .step h3 {
+  font-size: 1.1rem; /* Slightly smaller to accommodate number */
+}
+
+
+/* Features Section - Icon Styling */
+#root .features-section .feature-item {
+    padding-top: 2rem;
+    position: relative; /* For icon positioning */
+}
+#root .features-section .feature-icon {
+    height: 32px; /* Adjust size */
+    width: 32px;
+    margin-bottom: 1rem;
+    /* Example of positioning icon inside the card at the top */
+    /* position: absolute;
+    top: -16px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1f1f1f; 
+    padding: 8px; 
+    border-radius: 50%; */
+}

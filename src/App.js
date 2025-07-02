@@ -9,30 +9,29 @@ import './App.css';
 function App() {
   const [currentView, setCurrentView] = useState('landing');
   const [uploadedImagePreview, setUploadedImagePreview] = useState(null);
-  // eslint-disable-next-line no-unused-vars
-  const [uploadedImageFile, setUploadedImageFile] = useState(null);
+  const [uploadedImageFileObject, setUploadedImageFileObject] = useState(null);
 
   const faqRef = useRef(null);
   const tryLooksyRef = useRef(null);
 
   const handleImageUploaded = (previewUrl, imageFile) => {
     setUploadedImagePreview(previewUrl);
-    setUploadedImageFile(imageFile);
+    setUploadedImageFileObject(imageFile);
     setCurrentView('results');
   };
 
   const handleStartOver = () => {
     setUploadedImagePreview(null);
-    setUploadedImageFile(null);
+    setUploadedImageFileObject(null);
     setCurrentView('upload');
   };
 
+  // UPDATED FAQ TEXT
   const faqData = [
-    { question: "How does Looksy work?", answer: "You upload a photo of your face. Our system (currently simulated with random matches) will then show you other users from our database who have a similar look. You'll see a similarity score and, if both you and your match opt-in, you can share Instagram handles to connect." },
-    { question: "Is my photo stored? What about privacy?", answer: "Privacy is a core principle. When you upload, you'll have options to control if your image is stored for future matching or if it's only used for the current session. You also control if your Instagram handle is shared. We aim to be transparent about data usage." },
-    { question: "How is the similarity percentage calculated?", answer: "For this MVP, the similarity score is randomly generated to simulate a real AI. In a full version, we would use advanced facial recognition AI to compare key facial features and calculate a precise visual similarity score." },
-    { question: "Can I connect with my matches?", answer: "Yes! If you find a match and both you and the other person have opted to share your Instagram handles, a way to see the handle will be displayed, allowing you to connect outside of Looksy." },
-    { question: "Is this app free?", answer: "The current MVP/demo is free to use. Future pricing models will be determined based on features and operational costs." }
+    { question: "How does Looksy work?", answer: "You upload a photo of your face. Our system then compares your facial features to a pre-set collection of AI-generated faces using a real facial recognition API. You'll see your top matches sorted by a calculated similarity score. If both users were real and opted-in, you could connect!" },
+    { question: "Is my photo stored? What about privacy?", answer: "Privacy is our core principle. In this demo, your uploaded photo is sent to our backend for a one-time analysis and is deleted from the server immediately after processing. We do not store your image. The full app will be built with explicit, granular consent for all data usage." },
+    { question: "How is the similarity percentage calculated?", answer: "When you upload an image, we use a production-grade facial recognition model to convert your face and our demo faces into numerical data called 'embeddings.' The similarity score is then calculated based on the mathematical distance between your embedding and each of the demo face embeddings." },
+    { question: "Can I connect with my matches?", answer: "In this demo, the matches are AI-generated and do not have real social media profiles. The 'Show Instagram' feature is a functional UI demonstration of how opt-in connections would work in the final app, where real users could consent to share their information." }
   ];
 
   const scrollToRef = (ref) => {
@@ -73,22 +72,12 @@ function App() {
           <div className="long-landing-page">
             <section className="landing-section hero-section">
               <div className="section-content-wrapper hero-content-wrapper">
-                <h2>Looksy - The AI-Driven Lookalike App</h2>
-                <p>Ever wondered who shares your features? Looksy connects you with visually similar individuals from our user-contributed community based on (simulated) AI facial similarity. Upload your photo, get matched, and optionally connect!</p>
-                
-                {/* 1. REMOVE INTERFACE EXAMPLE IMAGE (OR COMMENT OUT) */}
-                {/* 
+                {/* NEW HERO ICON */}
                 <div className="landing-hero-visual">
-                  <img
-                    src="/looksy-results-mockup.png"
-                    alt="Looksy App Interface Example"
-                    className="app-screenshot-mockup"
-                  />
+                    <img src="/icons/hero-icon.svg" alt="Looksy Concept Icon" className="hero-icon"/>
                 </div>
-                */}
-                {/* Add some space if the image is removed */}
-                <div style={{height: '30px'}}></div> 
-
+                <h2>Looksy - The AI-Driven Lookalike App</h2>
+                <p>Ever wondered who shares your features? Looksy connects you with visually similar individuals from our user-contributed community based on real AI facial similarity analysis.</p>
                 <div ref={tryLooksyRef} className="cta-buttons">
                    <button onClick={() => handleNavClick('upload')} className="button-primary large">
                      Find My Lookalike Now <span className="demo-text">(Demo)</span>
@@ -103,24 +92,24 @@ function App() {
                 <h2>How Looksy Works</h2>
                 <div className="steps-container">
                   <div className="step">
-                    <div className="step-icon">1</div>
-                    <h3>Upload Your Photo</h3>
-                    <p>Securely submit a clear photo of your face. Your privacy is paramount.</p>
+                    <div className="step-icon"><img src="/icons/upload-icon.svg" alt="Upload"/></div>
+                    <h3>1. Upload Photo</h3>
+                    <p>Securely submit a clear photo of your face. Your image is deleted after analysis.</p>
                   </div>
                   <div className="step">
-                    <div className="step-icon">2</div>
-                    <h3>AI-Powered Matching</h3>
-                    <p>(Simulated) Our AI analyzes facial features to find visually similar users.</p>
+                    <div className="step-icon"><img src="/icons/ai-match-icon.svg" alt="AI Matching"/></div>
+                    <h3>2. AI Analysis</h3>
+                    <p>Our AI converts your facial features into a unique mathematical signature.</p>
                   </div>
                   <div className="step">
-                    <div className="step-icon">3</div>
-                    <h3>See Your Lookalikes</h3>
-                    <p>Discover users who share your look and see your similarity score.</p>
+                    <div className="step-icon"><img src="/icons/view-results-icon.svg" alt="View Results"/></div>
+                    <h3>3. See Matches</h3>
+                    <p>Discover AI-generated faces from our demo set, sorted by similarity to you.</p>
                   </div>
                   <div className="step">
-                    <div className="step-icon">4</div>
-                    <h3>Connect (Optional)</h3>
-                    <p>If both you and your match opt-in, share Instagram handles to connect.</p>
+                    <div className="step-icon"><img src="/icons/connect-icon.svg" alt="Connect"/></div>
+                    <h3>4. Connect</h3>
+                    <p>In the full app, you can optionally connect with real users if you both consent.</p>
                   </div>
                 </div>
               </div>
@@ -128,19 +117,22 @@ function App() {
 
             <section className="landing-section features-section">
               <div className="section-content-wrapper">
-                <h2>Why Looksy?</h2>
+                <h2>Privacy-First by Design</h2>
                 <div className="features-grid">
                     <div className="feature-item">
-                        <h3>User-Contributed Database</h3>
-                        <p>Matches are made with real people from our community, not celebrities.</p>
+                        <img src="/icons/database-icon.svg" alt="Database" className="feature-icon"/>
+                        <h3>User-Contributed</h3>
+                        <p>No scraping. The full app's lookalike pool will be built only from users who explicitly opt-in.</p>
                     </div>
                     <div className="feature-item">
-                        <h3>Privacy First</h3>
-                        <p>You control your data – if your image is stored, matched, or shown.</p>
+                        <img src="/icons/privacy-icon.svg" alt="Privacy Shield" className="feature-icon"/>
+                        <h3>You Are In Control</h3>
+                        <p>Your photo is only used for the one-time analysis and is not stored. You control all your data.</p>
                     </div>
                     <div className="feature-item">
-                        <h3>Opt-In Connections</h3>
-                        <p>Only share contact info if both you and your match agree.</p>
+                        <img src="/icons/connect-feature-icon.svg" alt="Connection" className="feature-icon"/>
+                        <h3>Consent is Key</h3>
+                        <p>Sharing contact information like an Instagram handle is double opt-in. It only happens if both you and your match agree.</p>
                     </div>
                 </div>
               </div>
@@ -157,49 +149,30 @@ function App() {
                 <h2>Download Looksy</h2>
                 <div className="store-badges">
                   <div className="store-badge non-interactive-badge" title="Download on the App Store (Coming Soon)">
-                    <img
-                        src="/apple-store-badge-dark.png"
-                        alt="Download on the App Store (Coming Soon)"
-                    />
+                    <img src="/apple-store-badge-dark.png" alt="Download on the App Store (Coming Soon)"/>
                   </div>
                   <div className="store-badge non-interactive-badge" title="Get it on Google Play (Coming Soon)">
-                    <img
-                        src="/google-play-badge-dark.png"
-                        alt="Get it on Google Play (Coming Soon)"
-                    />
+                    <img src="/google-play-badge-dark.png" alt="Get it on Google Play (Coming Soon)"/>
                   </div>
                 </div>
-                <p>
-                  Our app is launching soon on iOS and Android!
-                  <span className="coming-soon-text"> Stay tuned.</span>
-                </p>
+                <p>Our app is launching soon on iOS and Android!<span className="coming-soon-text"> Stay tuned.</span></p>
               </div>
             </section>
 
             <section className="landing-section final-cta-section">
                 <div className="section-content-wrapper">
                     <h2>Ready to Find Your Lookalike?</h2>
-                    <p>Join our waitlist to be the first to know when we fully launch, or try the demo now!</p>
-                    <div className="cta-buttons"> {/* Ensure these buttons use .large class */}
-                        {/* 2. CHANGE TEXT OF THIS BUTTON */}
-                        <button onClick={() => handleNavClick('upload')} className="button-primary large">
-                            Find My Lookalike Now <span className="demo-text">(Demo)</span>
-                        </button>
-                        <button onClick={() => handleNavClick('waitlist')} className="button-secondary large">
-                            Join Official Waitlist
-                        </button>
+                    <p>Join our waitlist to be the first to know when we fully launch, or try the working demo now!</p>
+                    <div className="cta-buttons">
+                        <button onClick={() => handleNavClick('upload')} className="button-primary large">Find My Lookalike Now <span className="demo-text">(Demo)</span></button>
+                        <button onClick={() => handleNavClick('waitlist')} className="button-secondary large">Join Official Waitlist</button>
                     </div>
                 </div>
             </section>
           </div>
         )}
         {currentView === 'upload' && <UploadScreen onImageUpload={handleImageUploaded} />}
-        {currentView === 'results' && (
-          <MatchResultScreen
-            userUploadedImage={uploadedImagePreview}
-            onStartOver={handleStartOver}
-          />
-        )}
+        {currentView === 'results' && (<MatchResultScreen userUploadedImage={uploadedImagePreview} uploadedImageFileObject={uploadedImageFileObject} onStartOver={handleStartOver} />)}
         {currentView === 'waitlist' && <WaitlistForm />}
       </main>
 
@@ -207,12 +180,8 @@ function App() {
         <div className="footer-content">
           <p>© {new Date().getFullYear()} Looksy. Your Face, Your Control.</p>
           <div className="social-links">
-            <a href="https://www.instagram.com/looksy_ai?igsh=aW16NjdmcWdweDR5&utm_source=qrRL" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Instagram">
-              <img src="/instagram-white.png" alt="Instagram" className="social-icon" />
-            </a>
-            <a href="https://x.com/looksy_ai?s=21&t=rVRUVacIChxYyWOcqjAP_Q" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Twitter (X)">
-              <img src="/twitter-white.png" alt="Twitter X" className="social-icon" />
-            </a>
+            <a href="https://instagram.com/looksyapp" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Instagram"><img src="/instagram-white.png" alt="Instagram" className="social-icon" /></a>
+            <a href="https://x.com/looksyapp" target="_blank" rel="noopener noreferrer" aria-label="Looksy on Twitter (X)"><img src="/twitter-white.png" alt="Twitter X" className="social-icon" /></a>
           </div>
         </div>
       </footer>

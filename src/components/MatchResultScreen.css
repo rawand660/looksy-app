@@ -203,3 +203,39 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+/* src/components/MatchResultScreen.css */
+/* ... (all existing dark theme styles for this file remain) ... */
+
+/* Error State Styles */
+#root .match-result-screen.error-active {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+#root .error-message {
+  color: #ffcdd2; /* Light red for error text */
+  background-color: #4e3333; /* Dark red background */
+  padding: 1.5rem;
+  border-radius: var(--base-border-radius);
+  border: 1px solid #a04545;
+}
+#root .error-message p {
+    color: #ffcdd2;
+    margin-bottom: 0.5rem;
+}
+#root .error-message button { /* Ensure buttons in error message are visible */
+    margin: 0.5rem;
+}
+#root .inline-error-message { /* For less critical errors shown with fallback data */
+    background-color: #4e3333;
+    color: #ffcdd2;
+    padding: 0.5rem 1rem;
+    border-radius: calc(var(--base-border-radius) / 2);
+    margin-bottom: 1rem;
+    font-size: 0.9em;
+    border: 1px solid #a04545;
+}
