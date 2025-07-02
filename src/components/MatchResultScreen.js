@@ -13,7 +13,7 @@ function MatchResultScreen({ userUploadedImage, onStartOver, uploadedImageFileOb
   const [userOptInInstagram, setUserOptInInstagram] = useState(false);
   const [userInstagramHandle, setUserInstagramHandle] = useState('');
 
-  const BACKEND_URL = 'http://localhost:5001'; // Your Flask backend URL
+const BACKEND_URL = 'https://looksy-backend.onrender.com';
 
   const fetchAndSetMatches = async () => {
     console.log("---- fetchAndSetMatches CALLED ----");
