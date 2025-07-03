@@ -121,7 +121,7 @@
     padding: 0.6rem;
     margin-top: 0.75rem;
     border: 1px solid #555555; /* Darker border */
-    border-radius: calc(var(--base-border-radius) - 4px); 
+    border-radius: calc(var(--base-border-radius) - 4px); /* Slightly less rounded than container */
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
     font-weight: 400;
@@ -217,7 +217,7 @@
 }
 
 #root .error-message {
-  color: #ffcdd2; /
+  color: #ffcdd2; 
   background-color: #4e3333; /* Dark red background */
   padding: 1.5rem;
   border-radius: var(--base-border-radius);
