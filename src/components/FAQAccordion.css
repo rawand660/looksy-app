@@ -1,30 +1,34 @@
-/* src/components/FAQAccordion.css */
+/* src/components/FAQAccordion.css - Corrected Dark Theme */
+
 #root .faq-accordion {
-  max-width: 700px; 
-  padding: 1rem 0; 
+  max-width: 800px; /* From App.css context */
+  margin-left: auto;
+  margin-right: auto;
   font-family: 'Inter', sans-serif;
 }
 
-#root .faq-accordion h2 { 
+#root .faq-accordion h2 {
+  /* This style is controlled by the .landing-section h2 in App.css */
+  /* If used on a different page, you'd style it here */
   font-family: 'Inter', sans-serif;
   text-align: center;
   margin-bottom: 1.5rem;
-  color: #ffffff; /* White */
+  color: #ffffff;
   font-size: 1.8rem;
   font-weight: 600;
 }
 
 #root .faq-item {
-  background-color: #1f1f1f; 
+  background-color: #1f1f1f;
   margin-bottom: 10px;
-  border: 1px solid #333333; 
-  border-radius: var(--base-border-radius); 
+  border: 1px solid #333333;
+  border-radius: var(--base-border-radius);
   overflow: hidden;
 }
 
 #root .faq-question {
   background-color: transparent;
-  color: #e0e0e0; 
+  color: #e0e0e0;
   cursor: pointer;
   padding: 18px 20px;
   width: 100%;
@@ -41,26 +45,28 @@
 }
 
 #root .faq-question:hover {
-  background-color: #2a2a2a; 
+  background-color: #2a2a2a;
+}
 
 #root .faq-icon {
   font-family: 'Inter', sans-serif;
   font-size: 1.6rem;
   font-weight: 300;
-  color: #ffffff; /* White icon */
+  color: #ffffff;
   transition: transform 0.3s ease;
   margin-left: 10px;
 }
 
 #root .faq-answer {
   padding: 20px 20px;
-  background-color: #2a2a2a; 
-  border-top: 1px solid #333333; 
-  color: #cccccc; /* Lighter grey text */
+  background-color: #2a2a2a;
+  border-top: 1px solid #333333;
+  color: #cccccc;
   font-family: 'Inter', sans-serif;
   font-weight: 400;
   line-height: 1.7;
   font-size: 1rem;
+  text-align: left; /* Ensure answer text is left-aligned */
   max-height: 500px;
   overflow: hidden;
   transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
