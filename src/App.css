@@ -1,4 +1,4 @@
-/* src/App.css - FINAL CLEANED VERSION */
+/* src/App.css - FINAL VERSION WITH 2x2 GRID FOR "HOW IT WORKS" */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
@@ -118,8 +118,8 @@ body {
 }
 #root .landing-section.hero-section {
     background-color: #121212;
-    padding-top: 4rem; /* More space at the top */
-    padding-bottom: 4rem; /* More space at the bottom */
+    padding-top: 4rem;
+    padding-bottom: 4rem;
 }
 
 #root .section-content-wrapper {
@@ -133,7 +133,7 @@ body {
   font-size: 2rem;
   color: #ffffff;
   font-weight: 600;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem; /* More space below headings */
 }
 #root .hero-section .hero-content-wrapper h2 {
     font-size: 2.4rem;
@@ -152,7 +152,7 @@ body {
   line-height: 1.7;
 }
 #root .hero-section .hero-content-wrapper p {
-  margin-bottom: 2.5rem; /* More space after hero paragraph */
+  margin-bottom: 2.5rem;
 }
 
 /* Call to Action Buttons Container */
@@ -184,13 +184,23 @@ body {
   }
 }
 
-/* How It Works Section */
+/* --- How It Works Section (UPDATED) --- */
 #root .how-it-works-section .steps-container {
-  display: grid; /* Use grid for better alignment */
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  display: grid; /* CHANGE: Use grid for layout */
+  grid-template-columns: 1fr; /* Default: single column for mobile */
   gap: 1.5rem;
 }
+
+@media (min-width: 768px) { /* On medium screens and up... */
+  #root .how-it-works-section .steps-container {
+    grid-template-columns: repeat(2, 1fr); /* CHANGE: Create a 2x2 grid */
+    max-width: 700px; /* Optional: constrain the width of the grid */
+    margin: 0 auto; /* Center the grid */
+  }
+}
+
 #root .how-it-works-section .step {
+  /* REMOVED: flex-basis and min-width, grid handles sizing now */
   padding: 1.5rem;
   background-color: #1f1f1f;
   border: 1px solid #333333;
@@ -198,9 +208,10 @@ body {
   text-align: center;
 }
 #root .landing-section:nth-child(even) .how-it-works-section .step {
-    background-color: #121212; /* Invert background for contrast */
+    background-color: #121212;
     border-color: #2a2a2a;
 }
+
 
 #root .how-it-works-section .step-icon {
   font-size: 1.5rem;
@@ -231,7 +242,7 @@ body {
   max-width: none;
 }
 
-/* Features Section */
+/* --- Features Section --- */
 #root .features-section .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -263,14 +274,14 @@ body {
   max-width: none;
 }
 
-/* FAQ Section on Landing Page */
+/* --- FAQ Section on Landing Page --- */
 #root .faq-section-landing .faq-accordion {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* Download App Section */
+/* --- Download App Section --- */
 #root .download-app-section p {
     color: #cccccc;
     margin-bottom: 0.5rem;
@@ -305,7 +316,7 @@ body {
   opacity: 1;
 }
 
-/* Final CTA Section */
+/* --- Final CTA Section --- */
 #root .final-cta-section p {
   max-width: 600px;
   margin-left: auto;
@@ -354,7 +365,7 @@ body {
   opacity: 0.7;
 }
 
-/* --- Global Button Styles (Dark Theme) --- */
+/* --- Global Button Styles --- */
 #root .button-primary,
 #root .button-secondary {
   font-family: 'Inter', sans-serif;
