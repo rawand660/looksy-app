@@ -1,9 +1,7 @@
-/* src/App.css - COMPLETE DARK THEME, ROUNDED CORNERS, INTER FONT, LOGO, SOCIALS, CTA BUTTON SIZING */
+/* src/App.css - FINAL CLEANED VERSION */
 
-/* Import Google Font (Inter) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Define rounded corner variable */
 :root {
   --base-border-radius: 12px;
 }
@@ -15,10 +13,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #121212; /* Main dark background */
-  color: #e0e0e0; /* Default light text color */
+  background-color: #121212;
+  color: #e0e0e0;
   line-height: 1.6;
-  font-weight: 400; /* Default font weight */
+  font-weight: 400;
 }
 
 #root .App {
@@ -30,12 +28,12 @@ body {
 
 /* --- App Header --- */
 #root .App-header {
-  background-color: #1f1f1f; /* Slightly lighter dark for header */
+  background-color: #1f1f1f;
   padding: 15px 30px;
   color: #e0e0e0;
-  border-bottom: 1px solid #333333; /* Darker border */
+  border-bottom: 1px solid #333333;
   display: flex;
-  flex-direction: row; /* Default to row for logo left, nav right */
+  flex-direction: row;
   align-items: center;
   justify-content: space-between;
 }
@@ -93,7 +91,6 @@ body {
   outline: none;
 }
 
-/* On very small screens, stack logo and nav */
 @media (max-width: 650px) {
   #root .App-header {
     flex-direction: column;
@@ -105,7 +102,7 @@ body {
 
 /* --- App Main Content Area --- */
 #root .App-main {
-  padding: 0; /* Sections will handle their own padding */
+  padding: 0;
   flex-grow: 1;
 }
 
@@ -121,8 +118,8 @@ body {
 }
 #root .landing-section.hero-section {
     background-color: #121212;
-    padding-top: 2rem;
-    padding-bottom: 3rem;
+    padding-top: 4rem; /* More space at the top */
+    padding-bottom: 4rem; /* More space at the bottom */
 }
 
 #root .section-content-wrapper {
@@ -155,79 +152,54 @@ body {
   line-height: 1.7;
 }
 #root .hero-section .hero-content-wrapper p {
-  margin-bottom: 2rem;
-}
-
-/* Hero Visual (App Screenshot) - styles remain even if img is commented out in JS */
-#root .landing-hero-visual {
-  margin: 2.5rem auto;
-  max-width: 600px;
-  padding: 0 1rem;
-  min-height: 50px; /* To maintain some space if image is removed */
-}
-#root .app-screenshot-mockup {
-  width: 100%;
-  height: auto;
-  border-radius: var(--base-border-radius);
-  border: 1px solid #333333;
-  display: block;
-  margin: 0 auto;
+  margin-bottom: 2.5rem; /* More space after hero paragraph */
 }
 
 /* Call to Action Buttons Container */
 #root .cta-buttons {
   margin-top: 2.5rem;
   display: flex;
-  flex-direction: column; /* Default: Stacked on mobile */
+  flex-direction: column;
   gap: 1rem;
   align-items: center;
 }
-
-/* Ensure buttons in CTA have a consistent behavior when stacked */
 #root .cta-buttons .button-primary,
 #root .cta-buttons .button-secondary {
-  width: auto; /* Allow button to size to content + padding by default */
-  min-width: 240px; /* UPDATED: Set a minimum width for better alignment when stacked */
-  max-width: 350px; /* UPDATED: Prevent buttons from getting too wide on mobile */
-  box-sizing: border-box; /* Ensure padding and border are included in width/height */
+  width: auto;
+  min-width: 240px;
+  max-width: 350px;
+  box-sizing: border-box;
 }
 
 @media (min-width: 600px) {
   #root .cta-buttons {
-    flex-direction: row; /* Side-by-side on larger screens */
+    flex-direction: row;
     justify-content: center;
   }
-  /* On larger screens, reset width constraints if needed, let flexbox handle it */
   #root .cta-buttons .button-primary,
   #root .cta-buttons .button-secondary {
     min-width: 0;
     max-width: none;
-    width: auto; /* Sizes to content + padding defined in global button styles */
+    width: auto;
   }
 }
 
-
 /* How It Works Section */
 #root .how-it-works-section .steps-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid; /* Use grid for better alignment */
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 1.5rem;
 }
 #root .how-it-works-section .step {
-  flex-basis: calc(25% - 1.5rem);
-  min-width: 220px;
   padding: 1.5rem;
   background-color: #1f1f1f;
   border: 1px solid #333333;
   border-radius: var(--base-border-radius);
   text-align: center;
 }
-#root .landing-section:nth-child(odd) .how-it-works-section .step {
-    background-color: #1f1f1f; /* Base dark */
-}
 #root .landing-section:nth-child(even) .how-it-works-section .step {
-    background-color: #2a2a2a; /* Slightly lighter dark if section is #1f1f1f */
+    background-color: #121212; /* Invert background for contrast */
+    border-color: #2a2a2a;
 }
 
 #root .how-it-works-section .step-icon {
@@ -240,6 +212,9 @@ body {
   line-height: 50px;
   border-radius: 50%;
   margin: 0 auto 1rem auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 #root .how-it-works-section .step h3 {
   font-family: 'Inter', sans-serif;
@@ -269,13 +244,10 @@ body {
   border-radius: var(--base-border-radius);
   text-align: left;
 }
-#root .landing-section:nth-child(odd) .features-section .feature-item {
-    background-color: #1f1f1f;
-}
 #root .landing-section:nth-child(even) .features-section .feature-item {
-    background-color: #2a2a2a;
+    background-color: #121212;
+    border-color: #2a2a2a;
 }
-
 #root .features-section .feature-item h3 {
   font-family: 'Inter', sans-serif;
   font-size: 1.2rem;
@@ -326,14 +298,12 @@ body {
 #root .store-badge img:hover {
     opacity: 0.85;
 }
-/* For non-interactive badges, if needed (JS has class non-interactive-badge) */
 #root .store-badge.non-interactive-badge {
   cursor: default;
 }
 #root .store-badge.non-interactive-badge img:hover {
   opacity: 1;
 }
-
 
 /* Final CTA Section */
 #root .final-cta-section p {
@@ -384,7 +354,6 @@ body {
   opacity: 0.7;
 }
 
-
 /* --- Global Button Styles (Dark Theme) --- */
 #root .button-primary,
 #root .button-secondary {
@@ -399,8 +368,8 @@ body {
   text-transform: uppercase;
   letter-spacing: 0.75px;
   transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.1s ease;
-  line-height: 1.5; /* Ensure text is vertically centered nicely */
-  box-sizing: border-box; /* Ensure padding and border are part of the total width/height */
+  line-height: 1.5;
+  box-sizing: border-box;
 }
 
 #root .button-primary {
@@ -444,62 +413,4 @@ body {
   opacity: 0.85;
   margin-left: 0.3em;
   text-transform: none;
-}
-/* src/App.css */
-/* --- APPEND THESE STYLES FOR FINAL UI POLISH --- */
-
-/* Hero Icon Style */
-#root .hero-icon {
-  height: 80px; /* Adjust size */
-  width: 80px; /* Adjust size */
-  margin-bottom: 1.5rem;
-  /* If it's a white SVG, you might not need a filter. */
-  /* If it's a black SVG you want to make white: */
-  /* filter: invert(1) brightness(2); */
-}
-
-/* Updated hero section spacing */
-#root .hero-section .hero-content-wrapper {
-  padding-bottom: 1rem; /* Less padding at bottom since there's no image */
-}
-#root .hero-section .landing-hero-visual {
-  min-height: 0; /* Remove min-height since screenshot is gone */
-  margin: 0 auto 1.5rem auto; /* Adjust margin */
-}
-
-/* How It Works Section - Icon Styling */
-#root .how-it-works-section .step-icon {
-  background-color: transparent; /* Remove colored circle background */
-  border: 2px solid #444444; /* Use a subtle border instead */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-#root .how-it-works-section .step-icon img {
-  height: 24px; /* Size of icon inside the circle */
-  width: 24px;
-}
-/* Re-style step titles to use numbers again */
-#root .how-it-works-section .step h3 {
-  font-size: 1.1rem; /* Slightly smaller to accommodate number */
-}
-
-
-/* Features Section - Icon Styling */
-#root .features-section .feature-item {
-    padding-top: 2rem;
-    position: relative; /* For icon positioning */
-}
-#root .features-section .feature-icon {
-    height: 32px; /* Adjust size */
-    width: 32px;
-    margin-bottom: 1rem;
-    /* Example of positioning icon inside the card at the top */
-    /* position: absolute;
-    top: -16px; 
-    left: 50%;
-    transform: translateX(-50%);
-    background: #1f1f1f; 
-    padding: 8px; 
-    border-radius: 50%; */
 }

@@ -1,12 +1,11 @@
 /* src/components/FAQAccordion.css */
 #root .faq-accordion {
-  max-width: 700px; /* This can be overridden by .faq-section-landing .faq-accordion if needed */
-  margin: 2rem auto;
-  padding: 1rem 0; /* Remove horizontal padding, section handles it */
+  max-width: 700px; 
+  padding: 1rem 0; 
   font-family: 'Inter', sans-serif;
 }
 
-#root .faq-accordion h2 { /* This h2 might be controlled by the section title style now */
+#root .faq-accordion h2 { 
   font-family: 'Inter', sans-serif;
   text-align: center;
   margin-bottom: 1.5rem;
@@ -16,16 +15,16 @@
 }
 
 #root .faq-item {
-  background-color: #1f1f1f; /* Darker item background */
+  background-color: #1f1f1f; 
   margin-bottom: 10px;
-  border: 1px solid #333333; /* Darker border */
-  border-radius: var(--base-border-radius); /* Rounded */
+  border: 1px solid #333333; 
+  border-radius: var(--base-border-radius); 
   overflow: hidden;
 }
 
 #root .faq-question {
   background-color: transparent;
-  color: #e0e0e0; /* Light text */
+  color: #e0e0e0; 
   cursor: pointer;
   padding: 18px 20px;
   width: 100%;
@@ -42,8 +41,7 @@
 }
 
 #root .faq-question:hover {
-  background-color: #2a2a2a; /* Slightly lighter dark hover */
-}
+  background-color: #2a2a2a; 
 
 #root .faq-icon {
   font-family: 'Inter', sans-serif;
@@ -56,8 +54,8 @@
 
 #root .faq-answer {
   padding: 20px 20px;
-  background-color: #2a2a2a; /* Darker answer background */
-  border-top: 1px solid #333333; /* Darker border */
+  background-color: #2a2a2a; 
+  border-top: 1px solid #333333; 
   color: #cccccc; /* Lighter grey text */
   font-family: 'Inter', sans-serif;
   font-weight: 400;

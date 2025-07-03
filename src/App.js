@@ -12,7 +12,6 @@ function App() {
   const [uploadedImageFileObject, setUploadedImageFileObject] = useState(null);
 
   const faqRef = useRef(null);
-  const tryLooksyRef = useRef(null);
 
   const handleImageUploaded = (previewUrl, imageFile) => {
     setUploadedImagePreview(previewUrl);
@@ -26,7 +25,6 @@ function App() {
     setCurrentView('upload');
   };
 
-  // UPDATED FAQ TEXT
   const faqData = [
     { question: "How does Looksy work?", answer: "You upload a photo of your face. Our system then compares your facial features to a pre-set collection of AI-generated faces using a real facial recognition API. You'll see your top matches sorted by a calculated similarity score. If both users were real and opted-in, you could connect!" },
     { question: "Is my photo stored? What about privacy?", answer: "Privacy is our core principle. In this demo, your uploaded photo is sent to our backend for a one-time analysis and is deleted from the server immediately after processing. We do not store your image. The full app will be built with explicit, granular consent for all data usage." },
@@ -72,13 +70,10 @@ function App() {
           <div className="long-landing-page">
             <section className="landing-section hero-section">
               <div className="section-content-wrapper hero-content-wrapper">
-                {/* NEW HERO ICON */}
-                <div className="landing-hero-visual">
-                    <img src="/icons/hero-icon.svg" alt="Looksy Concept Icon" className="hero-icon"/>
-                </div>
+                {/* The hero icon div is now removed for a cleaner look */}
                 <h2>Looksy - The AI-Driven Lookalike App</h2>
                 <p>Ever wondered who shares your features? Looksy connects you with visually similar individuals from our user-contributed community based on real AI facial similarity analysis.</p>
-                <div ref={tryLooksyRef} className="cta-buttons">
+                <div className="cta-buttons">
                    <button onClick={() => handleNavClick('upload')} className="button-primary large">
                      Find My Lookalike Now <span className="demo-text">(Demo)</span>
                    </button>
@@ -92,22 +87,22 @@ function App() {
                 <h2>How Looksy Works</h2>
                 <div className="steps-container">
                   <div className="step">
-                    <div className="step-icon"><img src="/icons/upload-icon.svg" alt="Upload"/></div>
+                    <div className="step-icon">1</div>
                     <h3>1. Upload Photo</h3>
                     <p>Securely submit a clear photo of your face. Your image is deleted after analysis.</p>
                   </div>
                   <div className="step">
-                    <div className="step-icon"><img src="/icons/ai-match-icon.svg" alt="AI Matching"/></div>
+                    <div className="step-icon">2</div>
                     <h3>2. AI Analysis</h3>
                     <p>Our AI converts your facial features into a unique mathematical signature.</p>
                   </div>
                   <div className="step">
-                    <div className="step-icon"><img src="/icons/view-results-icon.svg" alt="View Results"/></div>
+                    <div className="step-icon">3</div>
                     <h3>3. See Matches</h3>
                     <p>Discover AI-generated faces from our demo set, sorted by similarity to you.</p>
                   </div>
                   <div className="step">
-                    <div className="step-icon"><img src="/icons/connect-icon.svg" alt="Connect"/></div>
+                    <div className="step-icon">4</div>
                     <h3>4. Connect</h3>
                     <p>In the full app, you can optionally connect with real users if you both consent.</p>
                   </div>
@@ -120,17 +115,14 @@ function App() {
                 <h2>Privacy-First by Design</h2>
                 <div className="features-grid">
                     <div className="feature-item">
-                        <img src="/icons/database-icon.svg" alt="Database" className="feature-icon"/>
                         <h3>User-Contributed</h3>
                         <p>No scraping. The full app's lookalike pool will be built only from users who explicitly opt-in.</p>
                     </div>
                     <div className="feature-item">
-                        <img src="/icons/privacy-icon.svg" alt="Privacy Shield" className="feature-icon"/>
                         <h3>You Are In Control</h3>
                         <p>Your photo is only used for the one-time analysis and is not stored. You control all your data.</p>
                     </div>
                     <div className="feature-item">
-                        <img src="/icons/connect-feature-icon.svg" alt="Connection" className="feature-icon"/>
                         <h3>Consent is Key</h3>
                         <p>Sharing contact information like an Instagram handle is double opt-in. It only happens if both you and your match agree.</p>
                     </div>

@@ -121,7 +121,7 @@
     padding: 0.6rem;
     margin-top: 0.75rem;
     border: 1px solid #555555; /* Darker border */
-    border-radius: calc(var(--base-border-radius) - 4px); /* Slightly less rounded than container */
+    border-radius: calc(var(--base-border-radius) - 4px); 
     font-family: 'Inter', sans-serif;
     font-size: 0.9rem;
     font-weight: 400;
@@ -171,8 +171,8 @@
 /* ... (all existing dark theme styles for this file remain) ... */
 
 /* Loading State Styles */
-#root .match-result-screen.loading-active { /* Applied when isLoadingMatch is true */
-  min-height: 400px; /* Ensure it has some height while loading */
+#root .match-result-screen.loading-active { 
+  min-height: 400px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,8 +191,8 @@
 
 /* Simple CSS Spinner */
 #root .spinner {
-  border: 5px solid #444444; /* Darker border for spinner track */
-  border-top: 5px solid #ffffff; /* White for the spinning part */
+  border: 5px solid #444444; 
+  border-top: 5px solid #ffffff; 
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -217,7 +217,7 @@
 }
 
 #root .error-message {
-  color: #ffcdd2; /* Light red for error text */
+  color: #ffcdd2; /
   background-color: #4e3333; /* Dark red background */
   padding: 1.5rem;
   border-radius: var(--base-border-radius);
@@ -227,10 +227,10 @@
     color: #ffcdd2;
     margin-bottom: 0.5rem;
 }
-#root .error-message button { /* Ensure buttons in error message are visible */
+#root .error-message button { 
     margin: 0.5rem;
 }
-#root .inline-error-message { /* For less critical errors shown with fallback data */
+#root .inline-error-message { 
     background-color: #4e3333;
     color: #ffcdd2;
     padding: 0.5rem 1rem;
